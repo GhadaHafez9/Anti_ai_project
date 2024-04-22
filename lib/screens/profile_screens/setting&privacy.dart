@@ -2,7 +2,6 @@
 
 import 'package:anti_ai_project/screens/profile_screens/profile.dart';
 import 'package:anti_ai_project/screens/profile_screens/resetpass.dart';
-import 'package:anti_ai_project/screens/registration/resetpass.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 

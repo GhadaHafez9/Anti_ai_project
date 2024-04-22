@@ -403,7 +403,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                Signup_Screen()),
+                                               All_Screen()),
                                       );
                                     },
                                     child: Text(

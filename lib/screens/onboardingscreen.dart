@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:anti_ai_project/screens/registration/login_screen.dart';
 import 'package:flutter/services.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../models/content_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -14,6 +15,27 @@ class OnboardingScreen extends StatefulWidget {
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
   int _currentPageIndex = 0;
+  PageController _pageController = PageController();
+
+@override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  void goToNextPage() {
+    _pageController.nextPage(
+      duration: Duration(milliseconds: 300),
+      curve: Curves.ease,
+    );
+  }
+
+  void navigateToLoginScreen() {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => Login_Screen()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,12 +53,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         actions: [
           if (_currentPageIndex < 2)
             TextButton(
-              onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => Login_Screen()),
-                );
-              },
+              onPressed: navigateToLoginScreen,
+
               child: Text("Skip", style: TextStyle(color: Colors.white,
               decoration: TextDecoration.underline,
 
@@ -53,6 +71,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         children: [
           Expanded(
             child: PageView.builder(
+              controller: _pageController,
               itemCount: contents.length,
               itemBuilder: (_, i) {
                 return Padding(
@@ -92,6 +111,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 }
                 );
               },
+              
             ),
           ),
           SizedBox(height: 20),
@@ -111,16 +131,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               Row(
                 
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: buildPageIndicator(),
+                children: SmoothPageIndicator(),
               ),
               if (_currentPageIndex < contents.length - 1)
                 GestureDetector(
-                  onTap: () {
-                    setState(() {
-
-                        _currentPageIndex++;
-                    });
-                  },
+                  onTap: goToNextPage,
                   child: Icon(
                     Icons.arrow_forward,
                     color: Colors.white,
@@ -137,34 +152,28 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   
   }
 
-  List<Widget> buildPageIndicator() {
+  List<Widget> SmoothPageIndicator() {
   List<Widget> indicators = [];
   for (int i = 0; i < contents.length; i++) {
     indicators.add(
+      
       Row(
         children: [
           Container(
-            width: 10,
+            width: 15,
             height: 100,
             margin: EdgeInsets.symmetric(horizontal: 5, vertical: 7),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
+              
               color: i == _currentPageIndex ? Color(0xff5E87E8) : Colors.white,
+              
             ),
           ),
-          SizedBox(width:45,),
+          SizedBox(width:40,),
           if (i == 2 && _currentPageIndex >= 2)
             GestureDetector(
-              onTap: (
-              ) {
-                
-                setState(() {
-                  _currentPageIndex++;
-                  Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => Login_Screen()),);
-                });
-              },
+              onTap: navigateToLoginScreen,
               child: Icon(
                 Icons.check_circle,
                 color: Color(0xff51917A),

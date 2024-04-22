@@ -6,7 +6,6 @@ import 'package:anti_ai_project/screens/profile_screens/aboutus.dart';
 import 'package:anti_ai_project/screens/profile_screens/contactus.dart';
 import 'package:anti_ai_project/screens/profile_screens/setting&privacy.dart';
 import 'package:anti_ai_project/screens/profile_screens/terms&policy.dart';
-import 'package:anti_ai_project/screens/registration/terms&condi.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -62,7 +61,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 70),
+                  padding: const EdgeInsets.only(top: 20),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(16),
                     child: Container(
@@ -90,7 +89,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
           ),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.only(top: 230.0),
+              padding: const EdgeInsets.only(top: 200.0),
               child: Container(
                 height: double.infinity,
                 width: double.infinity,
