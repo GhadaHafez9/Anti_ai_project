@@ -1,18 +1,18 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, camel_case_types
 
-import 'package:anti_ai_project/screens/signup_screen.dart';
+import 'package:anti_ai_project/screens/registration/fortgetpassverify.dart';
+import 'package:anti_ai_project/screens/registration/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:intl_phone_field/intl_phone_field.dart';
 
-class FillInfo_Screen extends StatefulWidget {
-  const FillInfo_Screen({super.key});
+class ForgetPassword_Screen extends StatefulWidget {
+  const ForgetPassword_Screen({super.key});
 
   @override
-  State<FillInfo_Screen> createState() => _FillInfo_ScreenState();
+  State<ForgetPassword_Screen> createState() => _ForgetPassword_ScreenState();
 }
 
-class _FillInfo_ScreenState extends State<FillInfo_Screen> {
+class _ForgetPassword_ScreenState extends State<ForgetPassword_Screen> {
   final _formSignInkey = GlobalKey<FormState>();
 
   @override
@@ -22,6 +22,18 @@ class _FillInfo_ScreenState extends State<FillInfo_Screen> {
       appBar: AppBar(
         backgroundColor: Color(0xff5D71A0),
         elevation: 0,
+         leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => Login_Screen()),
+            );
+          },
+        ),
         automaticallyImplyLeading: false,
         
       ),
@@ -75,7 +87,7 @@ class _FillInfo_ScreenState extends State<FillInfo_Screen> {
                             height: 20,
                           ),
                           Text(
-                            "Fill your information",
+                            "Forgot your password ?",
                             style: TextStyle(
                               color: Color(0xff5E87E8),
                               fontSize: 27,
@@ -84,7 +96,7 @@ class _FillInfo_ScreenState extends State<FillInfo_Screen> {
                           ),
                           Center(
                             child: Text(
-                              "To continue, Fill your information first ",
+                              "Enter your email address",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 18,
@@ -94,18 +106,20 @@ class _FillInfo_ScreenState extends State<FillInfo_Screen> {
                           ),
                           Padding(
                             padding: EdgeInsets.symmetric(
-                                horizontal: 20.0, vertical: 10.0),
+                                horizontal: 15.0, vertical: 85.0),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Username',
+                                  'Email address ',
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 18,
                                     fontWeight: FontWeight.w400,
                                   ),
-                                ), // Label
+                                ),
+                                 // Label
+                                SizedBox(height: 10,),
                                 Container(
                                    color: Color(0xff1A1D21),
                                   child: TextFormField(
@@ -115,24 +129,27 @@ class _FillInfo_ScreenState extends State<FillInfo_Screen> {
                                       }
                                       return null;
                                     },
+                                    style: TextStyle(color: Colors.white),
+                                    cursorColor:  Color(0xff1A1D21) ,
                                     decoration: InputDecoration(
-                                      hintText: 'Enter a username',
+                                      hintText: 'Enter your email address',
                                       hintStyle: const TextStyle(
                                        color: Color(0xff9B9C9E),
                                         fontSize: 16,
                                         fontWeight: FontWeight.w500
                                       ),
+                                      
                                       border: OutlineInputBorder(
                                         borderSide: const BorderSide(
-                                          color: Color(0xff363A3D) // Default border color
+                                         color: Color(0xff363A3D) 
                                         ),
-                                        borderRadius: BorderRadius.circular(8),
+                                        borderRadius: BorderRadius.circular(10),
                                       ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: const BorderSide(
-                                          color: Color(0xff363A3D) // Default border color
+                                          color: Color(0xff363A3D) 
                                         ),
-                                        borderRadius: BorderRadius.circular(8),
+                                        borderRadius: BorderRadius.circular(10),
                                       ),
                                     ),
                                   ),
@@ -140,52 +157,7 @@ class _FillInfo_ScreenState extends State<FillInfo_Screen> {
                               ],
                             ),
                           ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 20.0, vertical: 15.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("Phone Number ",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-
-                                IntlPhoneField(
-                                  decoration: InputDecoration(
-                                    hintStyle: const TextStyle(
-                                     color: Color(0xff9B9C9E),
-                                       fontSize: 16,
-                                      fontWeight: FontWeight.w500
-                                    ),
-                                    border: OutlineInputBorder(
-                                      borderSide: const BorderSide(
-                                      color: Color(0xff363A3D)
-                                      ),
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide: const BorderSide(
-                                       color: Color(0xff363A3D)
-                                      ),
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                    labelText: 'Enter your phone number',
-                                  ),
-                                  // initialCountryCode:
-                                  //     'Egypt', 
-                                  // onChanged: (phone) {
-                                  //   print(phone.completeNumber); 
-                                  // },
-                                ),
-                              ],
-                            ),
-                          ),
-                          
-                          SizedBox(height: 105,),
+                          SizedBox(height: 100,),
                           Center(
                                   child: Padding(
                                     padding: const EdgeInsets.all(0.0),
@@ -198,7 +170,8 @@ class _FillInfo_ScreenState extends State<FillInfo_Screen> {
                                           Navigator.pushReplacement(
                                             context,
                                             MaterialPageRoute(
-                                                builder: (context) => Signup_Screen()),
+                                                builder: (context) => 
+                                                ForgetPass_Verify()),
                                           );
                                         },
                                         style: ElevatedButton.styleFrom(
@@ -213,10 +186,10 @@ class _FillInfo_ScreenState extends State<FillInfo_Screen> {
                                           ),
                                         ),
                                         child: Text(
-                                          'Sign Up',
+                                          'Next',
                                           style: TextStyle(
                                             color: Colors
-                                                .white, // Set the text color
+                                                .white,
                                             fontSize: 18,
                                           ),
                                         ),
@@ -227,11 +200,11 @@ class _FillInfo_ScreenState extends State<FillInfo_Screen> {
                         ],
                       ),
                     ),
-                  ),
+        ),
                 ),
               ),
-            ),
-          ],
+            
+        )],
         ),
       ),
     );

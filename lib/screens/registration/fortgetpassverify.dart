@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:anti_ai_project/screens/resetpass.dart';
-import 'package:anti_ai_project/screens/signup_screen.dart';
+import 'package:anti_ai_project/screens/registration/resetpass.dart';
+import 'package:anti_ai_project/screens/registration/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';

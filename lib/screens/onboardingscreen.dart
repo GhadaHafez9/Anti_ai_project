@@ -1,5 +1,5 @@
 // ignore_for_file: prefer_const_constructors
-import 'package:anti_ai_project/screens/login_screen.dart';
+import 'package:anti_ai_project/screens/registration/login_screen.dart';
 import 'package:flutter/services.dart';
 import '../models/content_model.dart';
 import 'package:flutter/material.dart';

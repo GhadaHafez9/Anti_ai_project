@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:anti_ai_project/screens/afterotp_screen.dart';
-import 'package:anti_ai_project/screens/signup_screen.dart';
+import 'package:anti_ai_project/screens/registration/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
@@ -247,12 +246,12 @@ class _OTP_ScreenState extends State<OTP_Screen> {
                                       height: 47,
                                       child: ElevatedButton(
                                         onPressed: () {
-                                         Navigator.push(
-                                          context , 
-                                           MaterialPageRoute(
-                                            builder: (context) =>
-                                              AfterOTP_Screen()),
-                                          );
+                                        //  Navigator.push(
+                                        //   context , 
+                                        //    MaterialPageRoute(
+                                        //     builder: (context) =>
+                                        //     ),
+                                        //   );
                                         },
                                         style: ElevatedButton.styleFrom(
                                           primary: Color(

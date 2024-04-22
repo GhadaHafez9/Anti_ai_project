@@ -1,36 +1,28 @@
-// ignore_for_file: prefer_const_constructors, unused_field, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:anti_ai_project/screens/forgetpass.dart';
 import 'package:anti_ai_project/screens/home_screen_all.dart';
-import 'package:anti_ai_project/screens/onboardingscreen.dart';
-import 'package:anti_ai_project/screens/signup_screen.dart';
+import 'package:anti_ai_project/screens/registration/login_screen.dart';
+import 'package:anti_ai_project/screens/registration/otp.dart';
+import 'package:anti_ai_project/screens/registration/terms&condi.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 
-
-class Login_Screen extends StatefulWidget {
-  const Login_Screen({super.key});
+class Signup_Screen extends StatefulWidget {
+  const Signup_Screen({super.key});
 
   @override
-  State<Login_Screen> createState() => _Login_ScreenState();
+  State<Signup_Screen> createState() => _Signup_ScreenState();
 }
 
-class _Login_ScreenState extends State<Login_Screen> {
+class _Signup_ScreenState extends State<Signup_Screen> {
   final _formSignInkey = GlobalKey<FormState>();
   bool _passwordVisible = false;
-
-  bool rememberPassword = true;
+  bool isChecked = false;
   TextEditingController emailcontroller = TextEditingController();
   TextEditingController passwordcontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    //     SystemChrome.setSystemUIOverlayStyle(
-    //     SystemUiOverlayStyle(
-    //      statusBarBrightness: Brightness.dark,
-    //      statusBarColor: Colors.transparent,
-    //   ),
-    // );
     return Scaffold(
       backgroundColor: Color(0xff5D71A0),
       appBar: AppBar(
@@ -44,11 +36,10 @@ class _Login_ScreenState extends State<Login_Screen> {
           onPressed: () {
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (context) => OnboardingScreen()),
+              MaterialPageRoute(builder: (context) => Login_Screen()),
             );
           },
         ),
-        automaticallyImplyLeading: true,
       ),
       body: Container(
         //width: double.infinity,
@@ -56,21 +47,7 @@ class _Login_ScreenState extends State<Login_Screen> {
         child: Stack(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 0, left: 10),
-              child: Center(
-                child: FractionallySizedBox(
-                  widthFactor: 2,
-                  heightFactor: 1.7,
-                  child: SvgPicture.asset(
-                    'assets/only-logo.svg',
-                    fit: BoxFit.contain,
-                    color: Color(0xFFFFFFFF).withOpacity(0.03),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 180.0),
+              padding: const EdgeInsets.only(top: 90.0),
               child: Container(
                 height: 47,
                 width: double.infinity,
@@ -82,20 +59,20 @@ class _Login_ScreenState extends State<Login_Screen> {
                 ),
               ),
             ),
-            Align(
-              alignment: Alignment.topCenter,
-              child: Padding(
-                padding: EdgeInsets.all(0.20),
+            Center(
+              child: FractionallySizedBox(
+                widthFactor: 1.2,
+                heightFactor: 1.2,
                 child: SvgPicture.asset(
                   'assets/anti-ai logo.svg',
-                  height: 175,
-                  width: 250,
+                  fit: BoxFit.contain,
+                  color: Color(0xFFFFFFFF).withOpacity(0.03),
                 ),
               ),
             ),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.only(top: 200.0),
+                padding: const EdgeInsets.only(top: 110.0),
                 child: Container(
                   height: double.infinity,
                   width: double.infinity,
@@ -114,7 +91,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                             height: 10,
                           ),
                           Text(
-                            "Welcome back !",
+                            "Create an account !",
                             style: TextStyle(
                               color: Color(0xff5E87E8),
                               fontSize: 30,
@@ -122,10 +99,10 @@ class _Login_ScreenState extends State<Login_Screen> {
                             ),
                           ),
                           Text(
-                            "Login so you can benefit from our application",
+                            "Sign up now and be a part of anti-ai community",
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 18,
+                              fontSize: 17,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -139,15 +116,16 @@ class _Login_ScreenState extends State<Login_Screen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Email',
+                                  'Email address',
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 18,
-                                    fontWeight: FontWeight.normal,
+                                    fontWeight: FontWeight.w400,
                                   ),
                                 ), // Label
                                 Container(
                                   color: Color(0xff1A1D21),
+                                  padding: EdgeInsets.only(),
                                   child: TextFormField(
                                     validator: (value) {
                                       if (value == null || value.isEmpty) {
@@ -158,17 +136,18 @@ class _Login_ScreenState extends State<Login_Screen> {
                                     decoration: InputDecoration(
                                       hintText: 'Enter your email address',
                                       hintStyle: const TextStyle(
-                                        color: Color(0xff9B9C9E),
+                                       color: Color(0xff9B9C9E),
                                       ),
                                       border: OutlineInputBorder(
                                         borderSide: const BorderSide(
-                                          color: Color(0xff363A3D),
+                                         color: Color(0xff363A3D) ,
                                         ),
                                         borderRadius: BorderRadius.circular(8),
                                       ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: const BorderSide(
-                                            color: Color(0xff363A3D)),
+                                          color: Color(0xff363A3D),
+                                        ),
                                         borderRadius: BorderRadius.circular(8),
                                       ),
                                     ),
@@ -188,7 +167,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 18,
-                                    fontWeight: FontWeight.normal,
+                                    fontWeight: FontWeight.w400,
                                   ),
                                 ), // Label
                                 Container(
@@ -204,33 +183,102 @@ class _Login_ScreenState extends State<Login_Screen> {
                                     },
                                     decoration: InputDecoration(
                                       hintText: 'Enter your password',
-                                      suffixIcon: IconButton(
-                                        icon: Icon(
-                                          _passwordVisible
-                                              ? Icons.visibility
-                                              : Icons.visibility_off,
-                                        ),
-                                        onPressed: () {
-                                          setState(() {
-                                            _passwordVisible =
-                                                !_passwordVisible;
-                                          });
-                                        },
-                                      ),
+                                       suffixIcon: IconButton(
+                                              icon: Icon(
+                                                _passwordVisible
+                                                    ? Icons.visibility
+                                                    : Icons.visibility_off,
+                                              ),
+                                              onPressed: () {
+                                                setState(() {
+                                                  _passwordVisible =
+                                                      !_passwordVisible;
+                                                });
+                                              },
+                                            ),
                                       hintStyle: const TextStyle(
-                                        color: Color(0xff9B9C9E),
+                                      color: Color(0xff9B9C9E),
                                       ),
                                       border: OutlineInputBorder(
                                         borderSide: const BorderSide(
-                                            color: Color(0xff363A3D)),
+                                        color: Color(0xff363A3D)
+                                        ),
                                         borderRadius: BorderRadius.circular(8),
                                       ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: const BorderSide(
-                                            color: Color(0xff363A3D)),
+                                        color: Color(0xff363A3D)
+                                        ),
                                         borderRadius: BorderRadius.circular(8),
                                       ),
                                     ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 1.0, vertical: 5.0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Confirm password',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                      ), // Label
+                                      Container(
+                                       color: Color(0xff1A1D21),
+
+                                        child: TextFormField(
+                                          obscureText: !_passwordVisible,
+                                          obscuringCharacter: '*',
+                                          validator: (value) {
+                                            if (value == null ||
+                                                value.length < 11) {
+                                              return 'Please enter Password';
+                                            }
+                                            return null;
+                                          },
+                                          decoration: InputDecoration(
+                                            hintText: 'Confirm your password',
+                                            suffixIcon: IconButton(
+                                              icon: Icon(
+                                                _passwordVisible
+                                                    ? Icons.visibility
+                                                    : Icons.visibility_off,
+                                              ),
+                                              onPressed: () {
+                                                setState(() {
+                                                  _passwordVisible =
+                                                      !_passwordVisible;
+                                                });
+                                              },
+                                            ),
+                                            hintStyle: const TextStyle(
+                                               color: Color(0xff9B9C9E),
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w500),
+                                            border: OutlineInputBorder(
+                                              borderSide: const BorderSide(
+                                               color: Color(0xff363A3D),
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderSide: const BorderSide(
+                                             color: Color(0xff363A3D),
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                                 Row(
@@ -240,37 +288,42 @@ class _Login_ScreenState extends State<Login_Screen> {
                                     Row(
                                       children: [
                                         Checkbox(
-                                          value: rememberPassword,
+                                          value: isChecked,
                                           onChanged: (bool? value) {
                                             setState(() {
-                                              rememberPassword = value!;
+                                              isChecked = value!;
                                             });
                                           },
                                         ),
                                         const Text(
-                                          'Remember me',
+                                          'I accept ',
                                           style: TextStyle(
-                                            color: Color(0xff686B6E),
+                                            color: Color(0xff5E87E8),
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 15,
                                           ),
                                         ),
                                       ],
                                     ),
-                                    GestureDetector(
-                                      onTap: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  ForgetPassword_Screen()),
-                                        );
-                                      },
-                                      child: Text(
-                                        'Forgot password ?',
-                                        style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w900,
-                                          color: Colors.white,
-                                          decoration: TextDecoration.underline,
+                                    Expanded(
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    TremsAndCondition()),
+                                          );
+                                        },
+                                        child: Text(
+                                          'terms & conditions',
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w900,
+                                            color: Colors.white,
+                                            decoration:
+                                                TextDecoration.underline,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -305,33 +358,22 @@ class _Login_ScreenState extends State<Login_Screen> {
                                       color: Color(0xff1877F2),
                                       size: 40,
                                     ),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    // ShaderMask(
-                                    //   shaderCallback: (bounds) =>
-                                    //       createGradientShader(bounds),
-                                    //   child: Icon(
-                                    //     MaterialCommunityIcons.google,
-                                    //     size: 40,
-                                    //     color: Colors.white,
-                                    //   ),
-                                    // ),
                                   ],
                                 ),
                                 Center(
                                   child: Padding(
                                     padding: const EdgeInsets.all(0.0),
                                     child: SizedBox(
-                                      width: 276,
+                                      width:
+                                          276, // Set the button width to fill the available space
                                       height: 47,
                                       child: ElevatedButton(
                                         onPressed: () {
-                                          Navigator.pushReplacement(
+                                          Navigator.push(
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    All_Screen()),
+                                                    OTP_Screen()),
                                           );
                                         },
                                         style: ElevatedButton.styleFrom(
@@ -342,10 +384,10 @@ class _Login_ScreenState extends State<Login_Screen> {
                                           ),
                                         ),
                                         child: Text(
-                                          'Login',
+                                          'Continue',
                                           style: TextStyle(
                                             color: Colors
-                                                .white,
+                                                .white, // Set the text color
                                             fontSize: 18,
                                           ),
                                         ),
@@ -364,11 +406,11 @@ class _Login_ScreenState extends State<Login_Screen> {
                                       height: 47,
                                       child: ElevatedButton(
                                         onPressed: () {
-                                          Navigator.pushReplacement(
+                                          Navigator.push(
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    Signup_Screen()),
+                                                    All_Screen()),
                                           );
                                         },
                                         style: ElevatedButton.styleFrom(
@@ -378,14 +420,16 @@ class _Login_ScreenState extends State<Login_Screen> {
                                                 BorderRadius.circular(100),
                                             side: BorderSide(
                                               color: Color(0xff07488A),
-                                              width: 2.0,
+                                              width:
+                                                  2.0, // Set the border width
                                             ),
                                           ),
                                         ),
                                         child: Text(
-                                          'Sign Up',
+                                          'Login',
                                           style: TextStyle(
-                                            color: Colors.white,
+                                            color: Colors
+                                                .white, // Set the text color
                                             fontSize: 18,
                                           ),
                                         ),
@@ -432,11 +476,4 @@ class _Login_ScreenState extends State<Login_Screen> {
       ),
     );
   }
-
-
-//   Shader createGradientShader(Rect bounds) {
-//   return LinearGradient(
-//     colors: [Color(0xffEA4335), Color(0xffFBBC05), Color(0xff34A853), Color(0xff4285F4)],
-//   ).createShader(bounds);
-// }
 }

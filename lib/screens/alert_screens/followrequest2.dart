@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:anti_ai_project/screens/followrequest.dart';
+import 'package:anti_ai_project/screens/alert_screens/followrequest.dart';
 import 'package:flutter/material.dart';
 
 class FollowRequestScreen2 extends StatelessWidget {
@@ -121,46 +121,6 @@ List<FollowRequest> followRequests = [
     profilePicture: 'assets/follow request.jpg',
     name: 'Nour ',
     email: 'started following you'
-  ),
-  FollowRequest(
-    profilePicture: 'assets/follow request.jpg',
-    name: 'Nour',
-    email: '@NourhanMahmoud'
-  ),
-  FollowRequest(
-    profilePicture: 'assets/follow request.jpg',
-    name: 'Nour',
-    email: '@NourhanMahmoud'
-  ),
-  FollowRequest(
-    profilePicture: 'assets/follow request.jpg',
-    name: 'Nour',
-    email: '@NourhanMahmoud'
-  ),
-  FollowRequest(
-    profilePicture: 'assets/follow request.jpg',
-    name: 'Nour',
-    email: '@NourhanMahmoud'
-  ),
-  FollowRequest(
-    profilePicture: 'assets/follow request.jpg',
-    name: 'Nour',
-    email: '@NourhanMahmoud'
-  ),
-  FollowRequest(
-    profilePicture: 'assets/follow request.jpg',
-    name: 'Nour',
-    email: '@NourhanMahmoud'
-  ),
-  FollowRequest(
-    profilePicture: 'assets/follow request.jpg',
-    name: 'Nour',
-    email: '@NourhanMahmoud'
-  ),
-  FollowRequest(
-    profilePicture: 'assets/follow request.jpg',
-    name: 'Nour',
-    email: '@NourhanMahmoud'
   ),
   FollowRequest(
     profilePicture: 'assets/follow request.jpg',

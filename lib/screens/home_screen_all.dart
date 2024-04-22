@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:anti_ai_project/screens/alert.dart';
+import 'package:anti_ai_project/screens/alert_screens/alert.dart';
 import 'package:anti_ai_project/screens/community.dart';
-import 'package:anti_ai_project/screens/profile.dart';
+import 'package:anti_ai_project/screens/profile_screens/profile.dart';
 import 'package:anti_ai_project/screens/upload.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +17,13 @@ class All_Screen extends StatefulWidget {
 
 class _All_ScreenState extends State<All_Screen> {
   int _currentIndex = 0;
-  List<Widget> pages = [Home_Page(), Community_Screen(), Upload_Screen(), Alert_Screen(),Profile_Screen()];  
+  
+  final List<Widget> pages = [
+    Home_Page(),
+     Community_Screen(), 
+     Upload_Screen(),
+      AlertScreen(),
+     Profile_Screen()];  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,6 +33,11 @@ class _All_ScreenState extends State<All_Screen> {
       bottomNavigationBar:
          BottomNavigationBar(
           currentIndex: _currentIndex,
+          onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
           type: BottomNavigationBarType.fixed,
           selectedItemColor: Colors.white,
           unselectedItemColor: Colors.grey,
@@ -58,10 +69,7 @@ class _All_ScreenState extends State<All_Screen> {
               
             ),
           ],
-          onTap: (index) {
-            _currentIndex = index;
-            setState(() {});
-          },
+         
         ),
       
       
