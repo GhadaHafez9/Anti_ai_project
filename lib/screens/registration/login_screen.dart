@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, unused_field, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers
+// ignore_for_file: prefer_const_constructors, unused_field, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, use_build_context_synchronously
 
 import 'package:anti_ai_project/screens/registration/forgetpass.dart';
 import 'package:anti_ai_project/screens/home_screen_all.dart';
@@ -6,6 +6,7 @@ import 'package:anti_ai_project/screens/onboardingscreen.dart';
 import 'package:anti_ai_project/screens/registration/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 class Login_Screen extends StatefulWidget {
@@ -155,6 +156,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                                       }
                                       return null;
                                     },
+                                    controller: emailcontroller,
                                     decoration: InputDecoration(
                                       hintText: 'Enter your email address',
                                       hintStyle: const TextStyle(
@@ -202,6 +204,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                                       }
                                       return null;
                                     },
+                                    controller: passwordcontroller,
                                     decoration: InputDecoration(
                                       hintText: 'Enter your password',
                                       suffixIcon: IconButton(
@@ -326,13 +329,17 @@ class _Login_ScreenState extends State<Login_Screen> {
                                       width: 276,
                                       height: 47,
                                       child: ElevatedButton(
-                                        onPressed: () {
+                                        onPressed: () async {
+                                          //                       if ( _formSignInkey.currentState!.validate()) {
+                                          // final SharedPreferences prefs = await SharedPreferences.getInstance();
+                                          // await prefs.setString('email', emailcontroller.text);
                                           Navigator.pushReplacement(
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
                                                     All_Screen()),
                                           );
+                                          //                   };
                                         },
                                         style: ElevatedButton.styleFrom(
                                           primary: Color(0xff07488A),
@@ -434,9 +441,5 @@ class _Login_ScreenState extends State<Login_Screen> {
   }
 
 
-//   Shader createGradientShader(Rect bounds) {
-//   return LinearGradient(
-//     colors: [Color(0xffEA4335), Color(0xffFBBC05), Color(0xff34A853), Color(0xff4285F4)],
-//   ).createShader(bounds);
-// }
+
 }

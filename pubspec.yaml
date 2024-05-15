@@ -70,15 +70,18 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/Onboarding1.svg
-    - assets/Onboarding2.svg
-    - assets/Onboarding3.svg
+    - assets/Onboarding1.png
+    - assets/Onboarding2.png
+    - assets/Onboarding3.png
     - assets/anti-ai logo.svg
     - assets/only-logo.svg
     - assets/follow request.jpg
     - assets/Profile.jpg
     - assets/add-photo-camera.svg
-    - assets/okay-image.svg
+    - assets/okay-img.png
+    - assets/fake-img.jpg
+    - assets/real-img.jpg
+    - assets/homevideo2.jpg
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -211,8 +211,8 @@ class _ContactUs_ScreenState extends State<ContactUs_Screen> {
                                   content: Container(
                                     width: 188,
                                     height: 173,
-                                    child: SvgPicture.asset(
-                                      "assets/okay-image.svg",
+                                    child: Image.asset(
+                                      "assets/okay-img.png",
                                       fit: BoxFit.contain,
                                     ),
                                   ),

@@ -1,11 +1,8 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, non_constant_identifier_names
 import 'package:anti_ai_project/screens/registration/login_screen.dart';
 import 'package:flutter/services.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../models/content_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({Key? key}) : super(key: key);
 
@@ -15,7 +12,7 @@ class OnboardingScreen extends StatefulWidget {
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
   int _currentPageIndex = 0;
-  PageController _pageController = PageController();
+  final PageController _pageController = PageController();
 
 @override
   void dispose() {
@@ -79,10 +76,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   child: Column(
                     children: [
                       SizedBox(height: 60),
-                      SvgPicture.asset(
+                      Image.asset(
                         contents[i].image,
                         height: 400,
                         width: 400,
+                        fit: BoxFit.fitWidth,
+                        filterQuality: FilterQuality.high,
+                      ),
+                      SizedBox(
+                        height: 10,
                       ),
                       Text(
                         contents[i].title,

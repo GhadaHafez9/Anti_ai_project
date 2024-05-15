@@ -249,8 +249,8 @@ class _OTP_ScreenState extends State<OTP_Screen> {
                                         content: Container(
                                           width: 188,
                                           height: 173,
-                                          child: SvgPicture.asset(
-                                            "assets/okay-image.svg",
+                                          child: Image.asset(
+                                            "assets/okay-img.png",
                                             fit: BoxFit.contain,
                                           ),
                                         ),

@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_build_context_synchronously
 
 import 'package:anti_ai_project/screens/home_screen_all.dart';
 import 'package:anti_ai_project/screens/registration/login_screen.dart';
@@ -6,6 +6,7 @@ import 'package:anti_ai_project/screens/registration/otp.dart';
 import 'package:anti_ai_project/screens/registration/terms&condi.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Signup_Screen extends StatefulWidget {
   const Signup_Screen({super.key});
@@ -15,7 +16,7 @@ class Signup_Screen extends StatefulWidget {
 }
 
 class _Signup_ScreenState extends State<Signup_Screen> {
-  final _formSignInkey = GlobalKey<FormState>();
+  final _formSignUpkey = GlobalKey<FormState>();
   bool _passwordVisible = false;
   bool isChecked = false;
   TextEditingController emailcontroller = TextEditingController();
@@ -84,7 +85,7 @@ class _Signup_ScreenState extends State<Signup_Screen> {
                   ),
                   child: SingleChildScrollView(
                     child: Form(
-                      key: _formSignInkey,
+                      key: _formSignUpkey,
                       child: Column(
                         children: [
                           SizedBox(
@@ -365,16 +366,25 @@ class _Signup_ScreenState extends State<Signup_Screen> {
                                     padding: const EdgeInsets.all(0.0),
                                     child: SizedBox(
                                       width:
-                                          276, // Set the button width to fill the available space
+                                          276, 
                                       height: 47,
                                       child: ElevatedButton(
-                                        onPressed: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    OTP_Screen()),
-                                          );
+                                        onPressed: () async {
+                                          // if (_formSignUpkey.currentState!
+                                          //     .validate()) {
+                                          //   final SharedPreferences prefs =
+                                          //       await SharedPreferences
+                                          //           .getInstance();
+                                          //   await prefs.setString(
+                                          //       'email', emailcontroller.text);
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      OTP_Screen()),
+                                            );
+                                          // };
+                                          
                                         },
                                         style: ElevatedButton.styleFrom(
                                           primary: Color(0xff07488A),
@@ -387,7 +397,7 @@ class _Signup_ScreenState extends State<Signup_Screen> {
                                           'Continue',
                                           style: TextStyle(
                                             color: Colors
-                                                .white, // Set the text color
+                                                .white, 
                                             fontSize: 18,
                                           ),
                                         ),
@@ -421,7 +431,7 @@ class _Signup_ScreenState extends State<Signup_Screen> {
                                             side: BorderSide(
                                               color: Color(0xff07488A),
                                               width:
-                                                  2.0, // Set the border width
+                                                  2.0, 
                                             ),
                                           ),
                                         ),
@@ -429,7 +439,7 @@ class _Signup_ScreenState extends State<Signup_Screen> {
                                           'Login',
                                           style: TextStyle(
                                             color: Colors
-                                                .white, // Set the text color
+                                                .white, 
                                             fontSize: 18,
                                           ),
                                         ),

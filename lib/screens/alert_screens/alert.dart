@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:anti_ai_project/screens/alert_screens/followrequest.dart';
 import 'package:flutter/material.dart';
 
@@ -54,19 +56,54 @@ class _AlertScreenState extends State<AlertScreen> {
         toolbarHeight: 80,
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Padding(
-            padding: EdgeInsets.all(16.0),
-            child: ElevatedButton(
-              onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => FollowRequestScreen(),
-                  ),
-                );
+          SizedBox(
+            height: 10,
+          ),
+          Container(
+            width: 380,
+                    decoration: BoxDecoration(
+                      color: Color(0xff37425E),
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+            child: ListTile(
+              leading: SizedBox(
+                height: 70,
+                width: 60,
+                child: Stack(
+                  children: const [
+                    Padding(
+                      padding: EdgeInsets.only(left: 10),
+                      child: CircleAvatar(
+                        radius: 20,
+                        backgroundImage: AssetImage("assets/Profile.jpg"),
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 5,
+                      child: CircleAvatar(
+                        radius: 20,
+                        backgroundImage: AssetImage("assets/follow request.jpg"),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              title: Text('Follow Requests in community',
+              style: TextStyle(
+                fontWeight: FontWeight.w800,
+                fontSize: 15,
+              ),
+              ),
+              subtitle: Text('NourhanMahmoud +10 others'),
+              trailing: Icon(Icons.arrow_forward_ios_rounded,
+              color: Color(0xff5E87E8),
+              ),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => FollowRequestScreen()));
               },
-              child: Text("Requests"),
             ),
           ),
           SizedBox(

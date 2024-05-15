@@ -6,7 +6,7 @@ import 'package:anti_ai_project/screens/profile_screens/profile.dart';
 import 'package:anti_ai_project/screens/upload.dart';
 import 'package:flutter/material.dart';
 
-import 'home_page.dart';
+import 'home_screens/home_page.dart';
 
 class All_Screen extends StatefulWidget {
   const All_Screen({super.key});
@@ -69,6 +69,7 @@ class _All_ScreenState extends State<All_Screen> {
               
             ),
           ],
+          
          
         ),
       
