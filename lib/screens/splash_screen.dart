@@ -4,7 +4,9 @@ import 'dart:async';
 
 import 'package:anti_ai_project/screens/onboardingscreen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+
 class Splash_Screen extends StatefulWidget {
   const Splash_Screen({super.key});
 
@@ -13,16 +15,15 @@ class Splash_Screen extends StatefulWidget {
 }
 
 class _Splash_ScreenState extends State<Splash_Screen> {
-@override
+  @override
   void initState() {
     Timer(const Duration(seconds: 3), () {
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) =>  OnboardingScreen()));
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => OnboardingScreen()));
     });
 
     super.initState();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,7 @@ class _Splash_ScreenState extends State<Splash_Screen> {
         child: Stack(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top:0 ,left: 10),
+              padding: const EdgeInsets.only(top: 0, left: 10),
               child: Center(
                 child: FractionallySizedBox(
                   widthFactor: 5,
@@ -51,17 +52,14 @@ class _Splash_ScreenState extends State<Splash_Screen> {
                 padding: EdgeInsets.all(0.20),
                 child: SvgPicture.asset(
                   'assets/anti-ai logo.svg',
-                  height: 350,
-                  width: 300,
+                  height: 350.h,
+                  width: 300.w,
                 ),
               ),
             ),
           ],
         ),
       ),
-
-
-
     );
   }
 }

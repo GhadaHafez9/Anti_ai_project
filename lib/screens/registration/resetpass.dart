@@ -2,6 +2,7 @@
 
 import 'package:anti_ai_project/screens/registration/signup_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class ResetPassword_Screen extends StatefulWidget {
@@ -16,7 +17,6 @@ class _ResetPassword_ScreenState extends State<ResetPassword_Screen> {
   bool _passwordVisible = false;
   bool isChecked = false;
 
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,9 +25,8 @@ class _ResetPassword_ScreenState extends State<ResetPassword_Screen> {
         backgroundColor: Color(0xff5D71A0),
         elevation: 0,
         automaticallyImplyLeading: false,
-        
       ),
-       body: Container(
+      body: Container(
         //width: double.infinity,
         //height: double.infinity,
         child: Stack(
@@ -35,12 +34,12 @@ class _ResetPassword_ScreenState extends State<ResetPassword_Screen> {
             Padding(
               padding: const EdgeInsets.only(top: 180.0),
               child: Container(
-                height: 47,
+                height: 47.h,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(40),
-                      topRight: Radius.circular(40)),
+                      topLeft: Radius.circular(40.r),
+                      topRight: Radius.circular(40.r)),
                   color: Color(0xFFFFFFFF).withOpacity(0.20),
                 ),
               ),
@@ -64,8 +63,8 @@ class _ResetPassword_ScreenState extends State<ResetPassword_Screen> {
                   width: double.infinity,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(40),
-                        topRight: Radius.circular(40)),
+                        topLeft: Radius.circular(40.r),
+                        topRight: Radius.circular(40.r)),
                     color: Color(0xff212131),
                   ),
                   child: SingleChildScrollView(
@@ -74,22 +73,22 @@ class _ResetPassword_ScreenState extends State<ResetPassword_Screen> {
                       child: Column(
                         children: [
                           SizedBox(
-                            height: 10,
+                            height: 10.h,
                           ),
                           Text(
                             "Change your password",
                             style: TextStyle(
                               color: Color(0xff5E87E8),
-                              fontSize: 30,
+                              fontSize: 30.sp,
                               fontWeight: FontWeight.w800,
                             ),
                           ),
                           SizedBox(
-                            height: 60,
+                            height: 60.h,
                           ),
                           Padding(
                             padding: EdgeInsets.symmetric(
-                                horizontal: 20.0, vertical: 5.0),
+                                horizontal: 20.0.w, vertical: 5.0.h),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -97,7 +96,7 @@ class _ResetPassword_ScreenState extends State<ResetPassword_Screen> {
                                   'New password',
                                   style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: 18,
+                                    fontSize: 18.sp,
                                     fontWeight: FontWeight.w400,
                                   ),
                                 ), // Label
@@ -114,40 +113,40 @@ class _ResetPassword_ScreenState extends State<ResetPassword_Screen> {
                                     },
                                     decoration: InputDecoration(
                                       hintText: 'Enter new password',
-                                       suffixIcon: IconButton(
-                                              icon: Icon(
-                                                _passwordVisible
-                                                    ? Icons.visibility
-                                                    : Icons.visibility_off,
-                                              ),
-                                              onPressed: () {
-                                                setState(() {
-                                                  _passwordVisible =
-                                                      !_passwordVisible;
-                                                });
-                                              },
-                                            ),
+                                      suffixIcon: IconButton(
+                                        icon: Icon(
+                                          _passwordVisible
+                                              ? Icons.visibility
+                                              : Icons.visibility_off,
+                                        ),
+                                        onPressed: () {
+                                          setState(() {
+                                            _passwordVisible =
+                                                !_passwordVisible;
+                                          });
+                                        },
+                                      ),
                                       hintStyle: const TextStyle(
-                                      color: Color(0xff9B9C9E),
+                                        color: Color(0xff9B9C9E),
                                       ),
                                       border: OutlineInputBorder(
                                         borderSide: const BorderSide(
-                                        color: Color(0xff363A3D)
-                                        ),
-                                        borderRadius: BorderRadius.circular(8),
+                                            color: Color(0xff363A3D)),
+                                        borderRadius:
+                                            BorderRadius.circular(8.r),
                                       ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: const BorderSide(
-                                        color: Color(0xff363A3D)
-                                        ),
-                                        borderRadius: BorderRadius.circular(8),
+                                            color: Color(0xff363A3D)),
+                                        borderRadius:
+                                            BorderRadius.circular(8.r),
                                       ),
                                     ),
                                   ),
                                 ),
                                 Padding(
                                   padding: EdgeInsets.symmetric(
-                                      horizontal: 1.0, vertical: 20.0),
+                                      horizontal: 1.0.w, vertical: 20.0.h),
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
@@ -156,13 +155,12 @@ class _ResetPassword_ScreenState extends State<ResetPassword_Screen> {
                                         'Confirm new password',
                                         style: TextStyle(
                                           color: Colors.white,
-                                          fontSize: 18,
+                                          fontSize: 18.sp,
                                           fontWeight: FontWeight.w400,
                                         ),
                                       ), // Label
                                       Container(
-                                       color: Color(0xff1A1D21),
-
+                                        color: Color(0xff1A1D21),
                                         child: TextFormField(
                                           obscureText: !_passwordVisible,
                                           obscuringCharacter: '*',
@@ -189,68 +187,68 @@ class _ResetPassword_ScreenState extends State<ResetPassword_Screen> {
                                               },
                                             ),
                                             hintStyle: const TextStyle(
-                                               color: Color(0xff9B9C9E),
+                                                color: Color(0xff9B9C9E),
                                                 fontSize: 16,
                                                 fontWeight: FontWeight.w500),
                                             border: OutlineInputBorder(
                                               borderSide: const BorderSide(
-                                               color: Color(0xff363A3D),
+                                                color: Color(0xff363A3D),
                                               ),
                                               borderRadius:
-                                                  BorderRadius.circular(8),
+                                                  BorderRadius.circular(8.r),
                                             ),
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: const BorderSide(
-                                             color: Color(0xff363A3D),
+                                                color: Color(0xff363A3D),
                                               ),
                                               borderRadius:
-                                                  BorderRadius.circular(8),
+                                                  BorderRadius.circular(8.r),
                                             ),
                                           ),
                                         ),
                                       ),
-                                      SizedBox(height: 105,),
-                                       Center(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(0.0),
-                                    child: SizedBox(
-                                      width:
-                                          276, 
-                                      height: 47,
-                                      child: ElevatedButton(
-                                        onPressed: () {
-                                         Navigator.push(
-                                          context , 
-                                           MaterialPageRoute(
-                                            builder: (context) =>
-                                           Signup_Screen()
+                                      SizedBox(
+                                        height: 105.h,
+                                      ),
+                                      Center(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(0.0),
+                                          child: SizedBox(
+                                            width: 276.w,
+                                            height: 47.h,
+                                            child: ElevatedButton(
+                                              onPressed: () {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          Signup_Screen()),
+                                                );
+                                              },
+                                              style: ElevatedButton.styleFrom(
+                                                backgroundColor:
+                                                    Color(0xff07488A),
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          100.r),
+                                                ),
                                               ),
-                                          );
-                                        },
-                                        style: ElevatedButton.styleFrom(
-                                          primary: Color(
-                                              0xff07488A),
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(100),
-                                          ),
-                                        ),
-                                        child: Text(
-                                          'Save',
-                                          style: TextStyle(
-                                            color: Colors
-                                                .white, 
-                                            fontSize: 18,
+                                              child: Text(
+                                                'Save',
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 18.sp,
+                                                ),
+                                              ),
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                  ),
-                                ),
                                     ],
                                   ),
                                 ),
-                               ],
+                              ],
                             ),
                           ),
                         ],

@@ -1,19 +1,50 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'dart:async';
+
+import 'package:anti_ai_project/screens/registration/fillyourinfo.dart';
 import 'package:anti_ai_project/screens/registration/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-class OTP_Screen extends StatefulWidget {
-  const OTP_Screen({super.key});
+class OTPScreen extends StatefulWidget {
+  const OTPScreen({super.key});
 
   @override
-  State<OTP_Screen> createState() => _OTP_ScreenState();
+  State<OTPScreen> createState() => _OTPScreenState();
 }
 
-class _OTP_ScreenState extends State<OTP_Screen> {
+class _OTPScreenState extends State<OTPScreen> {
   final _formSignInkey = GlobalKey<FormState>();
+  static const countdownDuration = 50;
+  int _secondsRemaining = countdownDuration;
+  Timer? _timer;
+
+  @override
+  void initState() {
+    super.initState();
+    startTimer();
+  }
+
+  void startTimer() {
+    _timer = Timer.periodic(Duration(seconds: 1), (_) {
+      setState(() {
+        if (_secondsRemaining > 0) {
+          _secondsRemaining--;
+        } else {
+          _timer?.cancel();
+        }
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,299 +66,308 @@ class _OTP_ScreenState extends State<OTP_Screen> {
           },
         ),
       ),
-      body: Container(
-        //width: double.infinity,
-        //height: double.infinity,
-        child: Stack(children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 180.0),
+      body: Stack(children: [
+        Padding(
+          padding: const EdgeInsets.only(top: 180.0),
+          child: Container(
+            height: 47.h,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(40.r),
+                  topRight: Radius.circular(40.r)),
+              color: Color(0xFFFFFFFF).withOpacity(0.20),
+            ),
+          ),
+        ),
+        Center(
+          child: FractionallySizedBox(
+            widthFactor: 1.2,
+            heightFactor: 1.2,
+            child: SvgPicture.asset(
+              'assets/anti-ai logo.svg',
+              fit: BoxFit.contain,
+              color: Color(0xFFFFFFFF).withOpacity(0.03),
+            ),
+          ),
+        ),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 200.0),
             child: Container(
-              height: 47,
+              height: double.infinity,
               width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(40),
                     topRight: Radius.circular(40)),
-                color: Color(0xFFFFFFFF).withOpacity(0.20),
+                color: Color(0xff212131),
               ),
-            ),
-          ),
-          Center(
-            child: FractionallySizedBox(
-              widthFactor: 1.2,
-              heightFactor: 1.2,
-              child: SvgPicture.asset(
-                'assets/anti-ai logo.svg',
-                fit: BoxFit.contain,
-                color: Color(0xFFFFFFFF).withOpacity(0.03),
-              ),
-            ),
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 200.0),
-              child: Container(
-                height: double.infinity,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(40),
-                      topRight: Radius.circular(40)),
-                  color: Color(0xff212131),
-                ),
-                child: SingleChildScrollView(
-                  child: Form(
-                    key: _formSignInkey,
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 20,
+              child: SingleChildScrollView(
+                child: Form(
+                  key: _formSignInkey,
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      Text(
+                        "OTP",
+                        style: TextStyle(
+                          color: Color(0xff5E87E8),
+                          fontSize: 27.sp,
+                          fontWeight: FontWeight.w800,
                         ),
-                        Text(
-                          "OTP",
-                          style: TextStyle(
-                            color: Color(0xff5E87E8),
-                            fontSize: 27,
-                            fontWeight: FontWeight.w800,
-                          ),
-                        ),
-                        Center(
-                          child: Text(
-                            "Enter the 6 digit code sent on your email for ",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ),
-                        Text(
-                          " Verification ",
+                      ),
+                      Center(
+                        child: Text(
+                          "Enter the 6 digit code sent on your email for ",
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 18,
+                            fontSize: 18.sp,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        SizedBox(
-                          width: 20,
+                      ),
+                      Text(
+                        " Verification ",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.w500,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Center(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                SizedBox(
-                                  width: 30,
-                                  child: TextFormField(
-                                    onChanged: (value) {
-                                      if (value.length == 1) {
-                                        FocusScope.of(context).nextFocus();
-                                      }
-                                    },
-                                    style:
-                                        Theme.of(context).textTheme.headline6,
-                                    keyboardType: TextInputType.number,
-                                    textAlign: TextAlign.center,
-                                    inputFormatters: [
-                                      LengthLimitingTextInputFormatter(1),
-                                      FilteringTextInputFormatter.digitsOnly,
-                                    ],
-                                  ),
+                      ),
+                      SizedBox(
+                        width: 20.w,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              SizedBox(
+                                width: 30.w,
+                                child: TextFormField(
+                                  onChanged: (value) {
+                                    if (value.length == 1) {
+                                      FocusScope.of(context).nextFocus();
+                                    }
+                                  },
+                                  style: Theme.of(context).textTheme.titleLarge,
+                                  keyboardType: TextInputType.number,
+                                  textAlign: TextAlign.center,
+                                  inputFormatters: [
+                                    LengthLimitingTextInputFormatter(1),
+                                    FilteringTextInputFormatter.digitsOnly,
+                                  ],
                                 ),
-                                SizedBox(
-                                  width: 30,
-                                  child: TextFormField(
-                                    onChanged: (value) {
-                                      if (value.length == 1) {
-                                        FocusScope.of(context).nextFocus();
-                                      }
-                                    },
-                                    style:
-                                        Theme.of(context).textTheme.headline6,
-                                    keyboardType: TextInputType.number,
-                                    textAlign: TextAlign.center,
-                                    inputFormatters: [
-                                      LengthLimitingTextInputFormatter(1),
-                                      FilteringTextInputFormatter.digitsOnly,
-                                    ],
-                                  ),
+                              ),
+                              SizedBox(
+                                width: 30.w,
+                                child: TextFormField(
+                                  onChanged: (value) {
+                                    if (value.length == 1) {
+                                      FocusScope.of(context).nextFocus();
+                                    }
+                                  },
+                                  style: Theme.of(context).textTheme.titleLarge,
+                                  keyboardType: TextInputType.number,
+                                  textAlign: TextAlign.center,
+                                  inputFormatters: [
+                                    LengthLimitingTextInputFormatter(1),
+                                    FilteringTextInputFormatter.digitsOnly,
+                                  ],
                                 ),
-                                SizedBox(
-                                  width: 30,
-                                  child: TextFormField(
-                                    onChanged: (value) {
-                                      if (value.length == 1) {
-                                        FocusScope.of(context).nextFocus();
-                                      }
-                                    },
-                                    style:
-                                        Theme.of(context).textTheme.headline6,
-                                    keyboardType: TextInputType.number,
-                                    textAlign: TextAlign.center,
-                                    inputFormatters: [
-                                      LengthLimitingTextInputFormatter(1),
-                                      FilteringTextInputFormatter.digitsOnly,
-                                    ],
-                                  ),
+                              ),
+                              SizedBox(
+                                width: 30.w,
+                                child: TextFormField(
+                                  onChanged: (value) {
+                                    if (value.length == 1) {
+                                      FocusScope.of(context).nextFocus();
+                                    }
+                                  },
+                                  style: Theme.of(context).textTheme.titleLarge,
+                                  keyboardType: TextInputType.number,
+                                  textAlign: TextAlign.center,
+                                  inputFormatters: [
+                                    LengthLimitingTextInputFormatter(1),
+                                    FilteringTextInputFormatter.digitsOnly,
+                                  ],
                                 ),
-                                SizedBox(
-                                  width: 30,
-                                  child: TextFormField(
-                                    onChanged: (value) {
-                                      if (value.length == 1) {
-                                        FocusScope.of(context).nextFocus();
-                                      }
-                                    },
-                                    style:
-                                        Theme.of(context).textTheme.headline6,
-                                    keyboardType: TextInputType.number,
-                                    textAlign: TextAlign.center,
-                                    inputFormatters: [
-                                      LengthLimitingTextInputFormatter(1),
-                                      FilteringTextInputFormatter.digitsOnly,
-                                    ],
-                                  ),
+                              ),
+                              SizedBox(
+                                width: 30.w,
+                                child: TextFormField(
+                                  onChanged: (value) {
+                                    if (value.length == 1) {
+                                      FocusScope.of(context).nextFocus();
+                                    }
+                                  },
+                                  style: Theme.of(context).textTheme.titleLarge,
+                                  keyboardType: TextInputType.number,
+                                  textAlign: TextAlign.center,
+                                  inputFormatters: [
+                                    LengthLimitingTextInputFormatter(1),
+                                    FilteringTextInputFormatter.digitsOnly,
+                                  ],
                                 ),
-                                SizedBox(
-                                  width: 30,
-                                  child: TextFormField(
-                                    onChanged: (value) {
-                                      if (value.length == 1) {
-                                        FocusScope.of(context).nextFocus();
-                                      }
-                                    },
-                                    style:
-                                        Theme.of(context).textTheme.headline6,
-                                    keyboardType: TextInputType.number,
-                                    textAlign: TextAlign.center,
-                                    inputFormatters: [
-                                      LengthLimitingTextInputFormatter(1),
-                                      FilteringTextInputFormatter.digitsOnly,
-                                    ],
-                                  ),
+                              ),
+                              SizedBox(
+                                width: 30.w,
+                                child: TextFormField(
+                                  onChanged: (value) {
+                                    if (value.length == 1) {
+                                      FocusScope.of(context).nextFocus();
+                                    }
+                                  },
+                                  style: Theme.of(context).textTheme.titleLarge,
+                                  keyboardType: TextInputType.number,
+                                  textAlign: TextAlign.center,
+                                  inputFormatters: [
+                                    LengthLimitingTextInputFormatter(1),
+                                    FilteringTextInputFormatter.digitsOnly,
+                                  ],
                                 ),
-                                SizedBox(
-                                  width: 30,
-                                  child: TextFormField(
-                                    onChanged: (value) {
-                                      if (value.length == 1) {
-                                        FocusScope.of(context).nextFocus();
-                                      }
-                                    },
-                                    style:
-                                        Theme.of(context).textTheme.headline6,
-                                    keyboardType: TextInputType.number,
-                                    textAlign: TextAlign.center,
-                                    inputFormatters: [
-                                      LengthLimitingTextInputFormatter(1),
-                                      FilteringTextInputFormatter.digitsOnly,
-                                    ],
-                                  ),
+                              ),
+                              SizedBox(
+                                width: 30.w,
+                                child: TextFormField(
+                                  onChanged: (value) {
+                                    if (value.length == 1) {
+                                      FocusScope.of(context).nextFocus();
+                                    }
+                                  },
+                                  style: Theme.of(context).textTheme.titleLarge,
+                                  keyboardType: TextInputType.number,
+                                  textAlign: TextAlign.center,
+                                  inputFormatters: [
+                                    LengthLimitingTextInputFormatter(1),
+                                    FilteringTextInputFormatter.digitsOnly,
+                                  ],
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
-                        SizedBox(
-                          height: 230,
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Center(
+                        child: Text(
+                          '00:$_secondsRemaining ',
+                          style: TextStyle(
+                            fontSize: 15.sp,
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
-                        Center(
-                          child: Padding(
-                            padding: const EdgeInsets.all(0.0),
-                            child: SizedBox(
-                              width: 276,
-                              height: 47,
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) {
-                                      return AlertDialog(
-                                        backgroundColor: Color(0xff212131),
-                                        content: Container(
-                                          width: 188,
-                                          height: 173,
-                                          child: Image.asset(
-                                            "assets/okay-img.png",
-                                            fit: BoxFit.contain,
-                                          ),
+                      ),
+                      SizedBox(
+                        height: 230.h,
+                      ),
+                      Center(
+                        child: Padding(
+                          padding: const EdgeInsets.all(0.0),
+                          child: SizedBox(
+                            width: 276.w,
+                            height: 47.h,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      backgroundColor: Color(0xff212131),
+                                      content: Container(
+                                        width: 188.w,
+                                        height: 173.h,
+                                        child: Image.asset(
+                                          "assets/okay-img.png",
+                                          fit: BoxFit.contain,
                                         ),
-                                        actions: [
-                                          Center(
-                                            child: Text(
-                                              " Your password has been recovered ",
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w700,
-                                              ),
+                                      ),
+                                      actions: [
+                                        Center(
+                                          child: Text(
+                                            " Your email has been verified ",
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 14.sp,
+                                              fontWeight: FontWeight.w700,
                                             ),
                                           ),
-                                          Center(
-                                            child: Text("successfully",
-                                                style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.w700,
-                                                )),
-                                          ),
-                                        ],
-                                      );
-                                    },
+                                        ),
+                                        Center(
+                                          child: Text("successfully",
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 14.sp,
+                                                fontWeight: FontWeight.w700,
+                                              )),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                ).then((_) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            FillInfo_Screen()),
                                   );
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  primary: Color(0xff07488A),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(100),
-                                  ),
+                                });
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Color(0xff07488A),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(100.r),
                                 ),
-                                child: Text(
-                                  'Verify',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                  ),
+                              ),
+                              child: Text(
+                                'Verify',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18.sp,
                                 ),
                               ),
                             ),
                           ),
                         ),
-                        SizedBox(
-                          height: 15,
-                        ),
-                        Center(
-                          child: GestureDetector(
-                            onTap: () {
-                              // Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //       builder: (context) =>
-                              //          FillInfo_Screen()),
-                              // );
-                            },
-                            child: Text(
-                              'Resend code ?',
-                              style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w900,
-                                decoration: TextDecoration.underline,
-                              ),
+                      ),
+                      SizedBox(
+                        height: 15.h,
+                      ),
+                      Center(
+                        child: GestureDetector(
+                          onTap: () {
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //       builder: (context) =>
+                            //          FillInfo_Screen()),
+                            // );
+                          },
+                          child: Text(
+                            'Resend code ?',
+                            style: TextStyle(
+                              fontSize: 16.sp,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w900,
+                              decoration: TextDecoration.underline,
                             ),
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ),
             ),
           ),
-        ]),
-      ),
+        ),
+      ]),
     );
   }
 }

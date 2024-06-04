@@ -3,6 +3,7 @@
 import 'package:anti_ai_project/screens/profile_screens/profile.dart';
 import 'package:anti_ai_project/screens/profile_screens/resetpass.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class SettingAndPrivacy_Screen extends StatefulWidget {
@@ -53,16 +54,16 @@ class _SettingAndPrivacy_ScreenState extends State<SettingAndPrivacy_Screen> {
             child: Stack(
               children: [
                 SizedBox(
-                  height: 140,
-                  width: 180,
+                  height: 140.h,
+                  width: 180.w,
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 40),
+                    padding: EdgeInsets.only(top: 40.h),
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(70),
+                      borderRadius: BorderRadius.circular(70.r),
                       child: Container(
                         alignment: Alignment.center,
-                        width: 100,
-                        height: 100,
+                        width: 100.w,
+                        height: 100.h,
                         child: Image.asset(
                           'assets/Profile.jpg',
                           fit: BoxFit.cover,
@@ -73,12 +74,12 @@ class _SettingAndPrivacy_ScreenState extends State<SettingAndPrivacy_Screen> {
                   ),
                 ),
                 Positioned(
-                  height: 140,
-                  width: 180,
+                  height: 140.h,
+                  width: 180.w,
                   bottom: -13,
                   child: SizedBox(
-                    height: 46,
-                    width: 46,
+                    height: 46.h,
+                    width: 46.w,
                     child: TextButton(
                       onPressed: () {},
                       child: SvgPicture.asset(
@@ -94,10 +95,10 @@ class _SettingAndPrivacy_ScreenState extends State<SettingAndPrivacy_Screen> {
             ),
           ),
           SizedBox(
-            height: 37,
+            height: 37.h,
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+            padding: EdgeInsets.symmetric(horizontal: 20.0.w, vertical: 10.0.h),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -105,7 +106,7 @@ class _SettingAndPrivacy_ScreenState extends State<SettingAndPrivacy_Screen> {
                   'Username',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 18,
+                    fontSize: 18.sp,
                     fontWeight: FontWeight.w400,
                   ),
                 ), // Label
@@ -120,17 +121,17 @@ class _SettingAndPrivacy_ScreenState extends State<SettingAndPrivacy_Screen> {
                     },
                     decoration: InputDecoration(
                       hintText: 'Ranim',
-                      hintStyle: const TextStyle(
+                      hintStyle: TextStyle(
                           color: Color(0xff9B9C9E),
-                          fontSize: 16,
+                          fontSize: 16.sp,
                           fontWeight: FontWeight.w500),
                       border: OutlineInputBorder(
                         borderSide: const BorderSide(color: Color(0xff363A3D)),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(8.r),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderSide: const BorderSide(color: Color(0xff363A3D)),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(8.r),
                       ),
                     ),
                   ),
@@ -139,10 +140,10 @@ class _SettingAndPrivacy_ScreenState extends State<SettingAndPrivacy_Screen> {
             ),
           ),
           SizedBox(
-            height: 15,
+            height: 15.h,
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
+            padding: EdgeInsets.symmetric(horizontal: 20.0.w, vertical: 5.0.h),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -150,7 +151,7 @@ class _SettingAndPrivacy_ScreenState extends State<SettingAndPrivacy_Screen> {
                   'Email',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 18,
+                    fontSize: 18.sp,
                     fontWeight: FontWeight.normal,
                   ),
                 ), // Label
@@ -172,11 +173,11 @@ class _SettingAndPrivacy_ScreenState extends State<SettingAndPrivacy_Screen> {
                         borderSide: const BorderSide(
                           color: Color(0xff363A3D),
                         ),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(8.r),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderSide: const BorderSide(color: Color(0xff363A3D)),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(8.r),
                       ),
                     ),
                   ),
@@ -186,8 +187,8 @@ class _SettingAndPrivacy_ScreenState extends State<SettingAndPrivacy_Screen> {
           ),
           ListTile(
             leading: Container(
-              height: 40,
-              width: 35,
+              height: 40.h,
+              width: 35.w,
               child: Icon(
                 Icons.lock_outline_rounded,
                 color: Color(0xff5E87E8),
@@ -197,28 +198,26 @@ class _SettingAndPrivacy_ScreenState extends State<SettingAndPrivacy_Screen> {
             title: Text(
               'Change your password',
               style: TextStyle(
-                fontSize: 15,
+                fontSize: 15.sp,
                 fontWeight: FontWeight.w600,
                 color: Colors.white,
               ),
             ),
             trailing: Icon(Icons.arrow_forward_outlined),
             onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => Profile_ResetPass()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Profile_ResetPass()));
             },
           ),
           SizedBox(
-            height: 170,
+            height: 170.h,
           ),
           Center(
             child: Padding(
               padding: const EdgeInsets.all(0.0),
               child: SizedBox(
-                width: 335,
-                height: 47,
+                width: 335.w,
+                height: 47.h,
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.push(
@@ -227,16 +226,16 @@ class _SettingAndPrivacy_ScreenState extends State<SettingAndPrivacy_Screen> {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: Color(0xff07488A),
+                    backgroundColor: Color(0xff07488A),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(100),
+                      borderRadius: BorderRadius.circular(100.r),
                     ),
                   ),
                   child: Text(
                     'Save',
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 18,
+                      fontSize: 18.sp,
                     ),
                   ),
                 ),

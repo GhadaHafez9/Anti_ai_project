@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, unused_field, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, use_build_context_synchronously
+// ignore_for_file: prefer_const_constructors, unused_field, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, use_build_context_synchronously, unused_import
 
 import 'package:anti_ai_project/screens/registration/forgetpass.dart';
 import 'package:anti_ai_project/screens/home_screen_all.dart';
@@ -7,7 +7,7 @@ import 'package:anti_ai_project/screens/registration/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 
 class Login_Screen extends StatefulWidget {
   const Login_Screen({super.key});
@@ -295,31 +295,36 @@ class _Login_ScreenState extends State<Login_Screen> {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Icon(
-                                      Icons.apple_rounded,
-                                      color: Colors.white,
-                                      size: 45,
+                                    GestureDetector(
+                                      onTap: () {},
+                                      child: Image.asset(
+                                        'assets/google-icon.png',
+                                        width: 33.72,
+                                        height: 34.41,
+                                      ),
                                     ),
                                     SizedBox(
                                       width: 10,
                                     ),
-                                    Icon(
-                                      Icons.facebook_rounded,
-                                      color: Color(0xff1877F2),
-                                      size: 40,
+                                    GestureDetector(
+                                      onTap: () {},
+                                      child: Icon(
+                                        Icons.apple_rounded,
+                                        color: Colors.white,
+                                        size: 45,
+                                      ),
                                     ),
                                     SizedBox(
                                       width: 10,
                                     ),
-                                    // ShaderMask(
-                                    //   shaderCallback: (bounds) =>
-                                    //       createGradientShader(bounds),
-                                    //   child: Icon(
-                                    //     MaterialCommunityIcons.google,
-                                    //     size: 40,
-                                    //     color: Colors.white,
-                                    //   ),
-                                    // ),
+                                    GestureDetector(
+                                      onTap: () {},
+                                      child: Icon(
+                                        Icons.facebook_rounded,
+                                        color: Color(0xff1877F2),
+                                        size: 40,
+                                      ),
+                                    ),
                                   ],
                                 ),
                                 Center(
@@ -342,7 +347,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                                           //                   };
                                         },
                                         style: ElevatedButton.styleFrom(
-                                          primary: Color(0xff07488A),
+                                          backgroundColor: Color(0xff07488A),
                                           shape: RoundedRectangleBorder(
                                             borderRadius:
                                                 BorderRadius.circular(100),
@@ -351,8 +356,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                                         child: Text(
                                           'Login',
                                           style: TextStyle(
-                                            color: Colors
-                                                .white,
+                                            color: Colors.white,
                                             fontSize: 18,
                                           ),
                                         ),
@@ -379,7 +383,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                                           );
                                         },
                                         style: ElevatedButton.styleFrom(
-                                          primary: Color(0xff212131),
+                                          backgroundColor: Color(0xff212131),
                                           shape: RoundedRectangleBorder(
                                             borderRadius:
                                                 BorderRadius.circular(100),
@@ -409,8 +413,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) =>
-                                               All_Screen()),
+                                            builder: (context) => All_Screen()),
                                       );
                                     },
                                     child: Text(
@@ -439,7 +442,4 @@ class _Login_ScreenState extends State<Login_Screen> {
       ),
     );
   }
-
-
-
 }

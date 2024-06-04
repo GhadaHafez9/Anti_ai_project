@@ -7,6 +7,7 @@ import 'package:anti_ai_project/screens/profile_screens/contactus.dart';
 import 'package:anti_ai_project/screens/profile_screens/setting&privacy.dart';
 import 'package:anti_ai_project/screens/profile_screens/terms&policy.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class Profile_Screen extends StatefulWidget {
@@ -23,7 +24,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-         backgroundColor: Color(0xff212131),
+        backgroundColor: Color(0xff212131),
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
@@ -38,13 +39,11 @@ class _Profile_ScreenState extends State<Profile_Screen> {
           },
         ),
       ),
-
       backgroundColor: Color(0xff212131),
       body: Container(
-        
         child: Stack(fit: StackFit.expand, children: [
           Padding(
-            padding: const EdgeInsets.only(top: 0, left: 10),
+            padding: EdgeInsets.only(top: 0, left: 10),
             child: Center(
               child: FractionallySizedBox(
                 widthFactor: 5,
@@ -61,13 +60,13 @@ class _Profile_ScreenState extends State<Profile_Screen> {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 20),
+                  padding: EdgeInsets.only(top: 20.h),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(16),
                     child: Container(
                       alignment: Alignment.center,
-                      width: 100,
-                      height: 100,
+                      width: 100.w,
+                      height: 100.h,
                       child: Image.asset(
                         'assets/Profile.jpg',
                         fit: BoxFit.cover,
@@ -76,11 +75,11 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                     ),
                   ),
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 10.h),
                 Text(
                   'Ranim Ahmed',
                   style: TextStyle(
-                      fontSize: 22,
+                      fontSize: 22.sp,
                       fontWeight: FontWeight.w700,
                       color: Colors.white),
                 ),
@@ -89,14 +88,14 @@ class _Profile_ScreenState extends State<Profile_Screen> {
           ),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.only(top: 200.0),
+              padding: EdgeInsets.only(top: 200.0.h),
               child: Container(
                 height: double.infinity,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(40),
-                      topRight: Radius.circular(40)),
+                      topLeft: Radius.circular(40.r),
+                      topRight: Radius.circular(40.r)),
                   color: Color(0xff38384D),
                 ),
                 child: SingleChildScrollView(
@@ -105,18 +104,18 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                     child: Column(
                       children: [
                         SizedBox(
-                          height: 10,
+                          height: 10.h,
                         ),
                         Padding(
                           padding: EdgeInsets.symmetric(
-                              horizontal: 20.0, vertical: 5.0),
+                              horizontal: 20.0.w, vertical: 5.0.h),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               ListTile(
                                 leading: Container(
-                                  height: 40,
-                                  width: 40,
+                                  height: 40.h,
+                                  width: 40.w,
                                   decoration: BoxDecoration(
                                     color: Color(0xffCFCFCF),
                                     shape: BoxShape.circle,
@@ -130,7 +129,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                                 title: Text(
                                   'Settings & Privacy',
                                   style: TextStyle(
-                                    fontSize: 20,
+                                    fontSize: 20.sp,
                                     fontWeight: FontWeight.w600,
                                     color: Colors.white,
                                   ),
@@ -145,12 +144,12 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                                 },
                               ),
                               SizedBox(
-                                height: 5,
+                                height: 5.h,
                               ),
                               ListTile(
                                 leading: Container(
-                                  height: 40,
-                                  width: 40,
+                                  height: 40.h,
+                                  width: 40.w,
                                   decoration: BoxDecoration(
                                     color: Color(0xffCFCFCF),
                                     shape: BoxShape.circle,
@@ -164,7 +163,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                                 title: Text(
                                   'Language',
                                   style: TextStyle(
-                                    fontSize: 20,
+                                    fontSize: 20.sp,
                                     fontWeight: FontWeight.w600,
                                     color: Colors.white,
                                   ),
@@ -175,15 +174,13 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                                     context: context,
                                     builder: (BuildContext context) {
                                       return SizedBox(
-                                        width: 200,
-                                        height: 200,
+                                        width: 200.w,
+                                        height: 200.h,
                                         child: AlertDialog(
                                           backgroundColor: Color(0xff212131),
                                           title: Text(
                                               'Choose Application Language'),
-                                          actions: [
-                                            
-                                          ],
+                                          actions: [],
                                         ),
                                       );
                                     },
@@ -191,12 +188,12 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                                 },
                               ),
                               SizedBox(
-                                height: 5,
+                                height: 5.h,
                               ),
                               ListTile(
                                 leading: Container(
-                                  height: 40,
-                                  width: 40,
+                                  height: 40.h,
+                                  width: 40.w,
                                   decoration: BoxDecoration(
                                     color: Color(0xffCFCFCF),
                                     shape: BoxShape.circle,
@@ -210,7 +207,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                                 title: Text(
                                   'Terms & Policy',
                                   style: TextStyle(
-                                    fontSize: 20,
+                                    fontSize: 20.sp,
                                     fontWeight: FontWeight.w600,
                                     color: Colors.white,
                                   ),
@@ -225,12 +222,12 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                                 },
                               ),
                               SizedBox(
-                                height: 5,
+                                height: 5.h,
                               ),
                               ListTile(
                                 leading: Container(
-                                  height: 40,
-                                  width: 40,
+                                  height: 40.h,
+                                  width: 40.w,
                                   decoration: BoxDecoration(
                                     color: Color(0xffCFCFCF),
                                     shape: BoxShape.circle,
@@ -244,7 +241,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                                 title: Text(
                                   'About Us',
                                   style: TextStyle(
-                                    fontSize: 20,
+                                    fontSize: 20.sp,
                                     fontWeight: FontWeight.w600,
                                     color: Colors.white,
                                   ),
@@ -259,12 +256,12 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                                 },
                               ),
                               SizedBox(
-                                height: 5,
+                                height: 5.h,
                               ),
                               ListTile(
                                 leading: Container(
-                                  height: 40,
-                                  width: 40,
+                                  height: 40.h,
+                                  width: 40.w,
                                   decoration: BoxDecoration(
                                     color: Color(0xffCFCFCF),
                                     shape: BoxShape.circle,
@@ -278,7 +275,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                                 title: Text(
                                   'Contact Us',
                                   style: TextStyle(
-                                    fontSize: 20,
+                                    fontSize: 20.sp,
                                     fontWeight: FontWeight.w600,
                                     color: Colors.white,
                                   ),
@@ -293,12 +290,12 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                                 },
                               ),
                               SizedBox(
-                                height: 5,
+                                height: 5.h,
                               ),
                               ListTile(
                                   leading: Container(
-                                    height: 40,
-                                    width: 40,
+                                    height: 40.h,
+                                    width: 40.w,
                                     decoration: BoxDecoration(
                                       color: Color(0xffCFCFCF),
                                       shape: BoxShape.circle,
@@ -312,7 +309,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                                   title: Text(
                                     'Log out',
                                     style: TextStyle(
-                                      fontSize: 20,
+                                      fontSize: 20.sp,
                                       fontWeight: FontWeight.w600,
                                       color: Colors.white,
                                     ),
@@ -335,22 +332,22 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                                                       color: Colors.white,
                                                       fontWeight:
                                                           FontWeight.bold,
-                                                      fontSize: 24,
+                                                      fontSize: 24.sp,
                                                     ),
                                                   ),
-                                                  SizedBox(height: 8),
+                                                  SizedBox(height: 8.h),
                                                   Text(
                                                     'Do you want to log out from your ',
                                                     style: TextStyle(
                                                       color: Colors.grey,
-                                                      fontSize: 17,
+                                                      fontSize: 17.sp,
                                                     ),
                                                   ),
                                                   Text(
                                                     "profile ? ",
                                                     style: TextStyle(
                                                       color: Colors.grey,
-                                                      fontSize: 17,
+                                                      fontSize: 17.sp,
                                                     ),
                                                   )
                                                 ],
@@ -372,12 +369,13 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                                                   },
                                                   style:
                                                       ElevatedButton.styleFrom(
-                                                    primary: Color(0xff07488A),
+                                                    backgroundColor:
+                                                        Color(0xff07488A),
                                                     shape:
                                                         RoundedRectangleBorder(
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              10),
+                                                              10.r),
                                                     ),
                                                     minimumSize: Size(150, 40),
                                                   ),
@@ -385,34 +383,30 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                                                     'Log out',
                                                     style: TextStyle(
                                                       color: Colors.white,
-                                                      fontSize: 18,
+                                                      fontSize: 18.sp,
                                                     ),
                                                   ),
                                                 ),
                                                 SizedBox(
-                                                  width: 30,
+                                                  width: 30.w,
                                                 ),
                                                 ElevatedButton(
                                                   onPressed: () {
-                                                    Navigator.pushReplacement(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              Profile_Screen()),
-                                                    );
+                                                    Navigator.pop(context);
                                                   },
                                                   style:
                                                       ElevatedButton.styleFrom(
-                                                    primary: Color(0xff212131),
+                                                    backgroundColor:
+                                                        Color(0xff212131),
                                                     shape:
                                                         RoundedRectangleBorder(
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              10),
+                                                              10.r),
                                                       side: BorderSide(
                                                         color:
                                                             Color(0xff07488A),
-                                                        width: 2.0,
+                                                        width: 2.0.w,
                                                       ),
                                                     ),
                                                     minimumSize: Size(150, 40),
@@ -421,7 +415,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                                                     'Cancel',
                                                     style: TextStyle(
                                                       color: Colors.white,
-                                                      fontSize: 18,
+                                                      fontSize: 18.sp,
                                                     ),
                                                   ),
                                                 ),

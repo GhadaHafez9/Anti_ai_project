@@ -3,6 +3,7 @@ import 'package:anti_ai_project/screens/registration/login_screen.dart';
 import 'package:flutter/services.dart';
 import '../models/content_model.dart';
 import 'package:flutter/material.dart';
+
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({Key? key}) : super(key: key);
 
@@ -14,7 +15,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   int _currentPageIndex = 0;
   final PageController _pageController = PageController();
 
-@override
+  @override
   void dispose() {
     _pageController.dispose();
     super.dispose();
@@ -51,15 +52,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           if (_currentPageIndex < 2)
             TextButton(
               onPressed: navigateToLoginScreen,
-
-              child: Text("Skip", style: TextStyle(color: Colors.white,
-              decoration: TextDecoration.underline,
-
-              ),
-              
+              child: Text(
+                "Skip",
+                style: TextStyle(
+                  color: Colors.white,
+                  decoration: TextDecoration.underline,
+                ),
               ),
             ),
-            
         ],
         automaticallyImplyLeading: false,
       ),
@@ -102,7 +102,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           color: i == 0 ? Color(0xff5E87E8) : Colors.white,
                         ),
                       ),
-                      
                     ],
                   ),
                 );
@@ -110,17 +109,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               onPageChanged: (index) {
                 setState(() {
                   _currentPageIndex = index;
-                }
-                );
+                });
               },
-              
             ),
           ),
           SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              SizedBox(width: 0,),
+              SizedBox(
+                width: 0,
+              ),
               Text(
                 '0${_currentPageIndex + 1}',
                 style: TextStyle(
@@ -128,10 +127,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   color: Colors.white,
                 ),
               ),
-            
-                      
               Row(
-                
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: SmoothPageIndicator(),
               ),
@@ -146,47 +142,43 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
             ],
           ),
-           
-          
         ],
       ),
     );
-  
   }
 
   List<Widget> SmoothPageIndicator() {
-  List<Widget> indicators = [];
-  for (int i = 0; i < contents.length; i++) {
-    indicators.add(
-      
-      Row(
-        children: [
-          Container(
-            width: 15,
-            height: 100,
-            margin: EdgeInsets.symmetric(horizontal: 5, vertical: 7),
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              
-              color: i == _currentPageIndex ? Color(0xff5E87E8) : Colors.white,
-              
-            ),
-          ),
-          SizedBox(width:40,),
-          if (i == 2 && _currentPageIndex >= 2)
-            GestureDetector(
-              onTap: navigateToLoginScreen,
-              child: Icon(
-                Icons.check_circle,
-                color: Color(0xff51917A),
-                size: 40,
+    List<Widget> indicators = [];
+    for (int i = 0; i < contents.length; i++) {
+      indicators.add(
+        Row(
+          children: [
+            Container(
+              width: 15,
+              height: 100,
+              margin: EdgeInsets.symmetric(horizontal: 5, vertical: 7),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color:
+                    i == _currentPageIndex ? Color(0xff5E87E8) : Colors.white,
               ),
             ),
-        ],
-      ),
-    );
+            SizedBox(
+              width: 40,
+            ),
+            if (i == 2 && _currentPageIndex >= 2)
+              GestureDetector(
+                onTap: navigateToLoginScreen,
+                child: Icon(
+                  Icons.check_circle,
+                  color: Color(0xff51917A),
+                  size: 40,
+                ),
+              ),
+          ],
+        ),
+      );
+    }
+    return indicators;
   }
-  return indicators;
 }
-}
-

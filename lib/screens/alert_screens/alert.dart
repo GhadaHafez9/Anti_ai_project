@@ -2,6 +2,7 @@
 
 import 'package:anti_ai_project/screens/alert_screens/followrequest.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NotificationObject {
   final String title;
@@ -59,18 +60,18 @@ class _AlertScreenState extends State<AlertScreen> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           SizedBox(
-            height: 10,
+            height: 10.h,
           ),
           Container(
-            width: 380,
-                    decoration: BoxDecoration(
-                      color: Color(0xff37425E),
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
+            width: 380.w,
+            decoration: BoxDecoration(
+              color: Color(0xff37425E),
+              borderRadius: BorderRadius.circular(15.0.r),
+            ),
             child: ListTile(
               leading: SizedBox(
-                height: 70,
-                width: 60,
+                height: 70.h,
+                width: 60.w,
                 child: Stack(
                   children: const [
                     Padding(
@@ -84,30 +85,35 @@ class _AlertScreenState extends State<AlertScreen> {
                       bottom: 5,
                       child: CircleAvatar(
                         radius: 20,
-                        backgroundImage: AssetImage("assets/follow request.jpg"),
+                        backgroundImage:
+                            AssetImage("assets/follow request.jpg"),
                       ),
                     ),
                   ],
                 ),
               ),
-              title: Text('Follow Requests in community',
-              style: TextStyle(
-                fontWeight: FontWeight.w800,
-                fontSize: 15,
-              ),
+              title: Text(
+                'Follow Requests in community',
+                style: TextStyle(
+                  fontWeight: FontWeight.w800,
+                  fontSize: 14.sp,
+                ),
               ),
               subtitle: Text('NourhanMahmoud +10 others'),
-              trailing: Icon(Icons.arrow_forward_ios_rounded,
-              color: Color(0xff5E87E8),
+              trailing: Icon(
+                Icons.arrow_forward_ios_rounded,
+                color: Color(0xff5E87E8),
               ),
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => FollowRequestScreen()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => FollowRequestScreen()));
               },
             ),
           ),
           SizedBox(
-            height: 10,
+            height: 10.h,
           ),
           Expanded(
             child: ListView.separated(
@@ -115,10 +121,10 @@ class _AlertScreenState extends State<AlertScreen> {
                 var notification = notifications[index];
                 return Center(
                   child: Container(
-                    width: 380,
+                    width: 380.w,
                     decoration: BoxDecoration(
                       color: Color(0xff37425E),
-                      borderRadius: BorderRadius.circular(15.0),
+                      borderRadius: BorderRadius.circular(15.0.r),
                     ),
                     child: ListTile(
                       leading: Icon(
@@ -136,7 +142,7 @@ class _AlertScreenState extends State<AlertScreen> {
                           Text(
                             notification.time,
                             style: TextStyle(
-                              fontSize: 12,
+                              fontSize: 12.sp,
                               color: Color(0xff5E87E8),
                             ),
                           )
@@ -151,7 +157,7 @@ class _AlertScreenState extends State<AlertScreen> {
                   ),
                 );
               },
-              separatorBuilder: (context, index) => SizedBox(height: 10),
+              separatorBuilder: (context, index) => SizedBox(height: 10.h),
               itemCount: notifications.length,
             ),
           ),

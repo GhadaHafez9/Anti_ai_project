@@ -3,6 +3,7 @@
 import 'package:anti_ai_project/screens/alert_screens/followrequest2.dart';
 import 'package:anti_ai_project/screens/home_screen_all.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FollowRequestScreen extends StatelessWidget {
   @override
@@ -10,8 +11,8 @@ class FollowRequestScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xff212131),
       appBar: AppBar(
-         elevation: 0,
-         leading: IconButton(
+        elevation: 0,
+        leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
             color: Colors.white,
@@ -36,11 +37,9 @@ class FollowRequestScreen extends StatelessWidget {
         ),
         centerTitle: true,
         toolbarHeight: 80,
-        
       ),
-      
-     body: Padding(
-        padding: EdgeInsets.only(top: 15),
+      body: Padding(
+        padding: EdgeInsets.only(top: 15.h),
         child: Expanded(
           child: ListView.separated(
             itemCount: followRequests.length,
@@ -48,10 +47,10 @@ class FollowRequestScreen extends StatelessWidget {
               final request = followRequests[index];
               return Center(
                 child: Container(
-                  width: 390,
+                  width: 390.w,
                   decoration: BoxDecoration(
                     color: Color(0xff37425E),
-                    borderRadius: BorderRadius.circular(13.0),
+                    borderRadius: BorderRadius.circular(13.0.r),
                   ),
                   child: ListTile(
                     leading: CircleAvatar(
@@ -60,26 +59,22 @@ class FollowRequestScreen extends StatelessWidget {
                     title: Text(
                       request.name,
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
+                          fontWeight: FontWeight.bold, fontSize: 14.sp),
                     ),
-                   
                     subtitle: Text(
                       request.email,
-                     maxLines: 3,
-                    overflow: TextOverflow.ellipsis,
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    trailing: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        SizedBox(width: 2),
-                        TextButton(
-                          style: ButtonStyle(
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.zero,
-                              ),
+                    trailing: Row(mainAxisSize: MainAxisSize.min, children: [
+                      SizedBox(width: 2.w),
+                      TextButton(
+                        style: ButtonStyle(
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.zero,
+                            ),
                           ),
                           backgroundColor:
                               MaterialStateProperty.all(Color(0xff07488A)),
@@ -99,41 +94,38 @@ class FollowRequestScreen extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        width: 4,
+                        width: 4.w,
                       ),
                       TextButton(
                         style: ButtonStyle(
                           shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                              WidgetStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(0),
                                 side: BorderSide(
                                   color: Color(0xff07488A),
-                                  width: 2.0,
-                                )
-                              ),
-                            ),
-                            foregroundColor:
-                                MaterialStateProperty.all(Color(0xff07488A)),
+                                  width: 2.0.w,
+                                )),
                           ),
-                          onPressed: () {},
-                          child: Text(
-                            '  Delete  ',
-                            style: TextStyle(
-                              color: Colors.white,
-                            ),
+                          foregroundColor:
+                              WidgetStateProperty.all(Color(0xff07488A)),
+                        ),
+                        onPressed: () {},
+                        child: Text(
+                          '  Delete  ',
+                          style: TextStyle(
+                            color: Colors.white,
                           ),
                         ),
-                      ]
+                      ),
+                    ]),
                   ),
-                ),
                 ),
               );
             },
             separatorBuilder: (context, index) => SizedBox(
-              height: 10,
+              height: 10.h,
             ),
-
           ),
         ),
       ),
@@ -146,21 +138,17 @@ class FollowRequest {
   final String name;
   final String email;
 
-  FollowRequest({required this.profilePicture, required this.name , required this.email});
+  FollowRequest(
+      {required this.profilePicture, required this.name, required this.email});
 }
 
 List<FollowRequest> followRequests = [
   FollowRequest(
-    profilePicture: 'assets/follow request.jpg',
-    name: 'Nour',
-    email: '@NourhanMahmoud'
-  ),
+      profilePicture: 'assets/follow request.jpg',
+      name: 'Nour',
+      email: '@NourhanMahmoud'),
   FollowRequest(
-    profilePicture: 'assets/follow request.jpg',
-    name: 'Nour',
-    email: '@NourhanMahmoud'
-  ),
-  
- 
-  
+      profilePicture: 'assets/follow request.jpg',
+      name: 'Nour',
+      email: '@NourhanMahmoud'),
 ];
