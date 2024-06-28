@@ -1,15 +1,17 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:anti_ai_project/screens/alert_screens/alert.dart';
-import 'package:anti_ai_project/screens/community.dart';
+import 'package:anti_ai_project/screens/community/community.dart';
 import 'package:anti_ai_project/screens/profile_screens/profile.dart';
 import 'package:anti_ai_project/screens/upload_screen/detectfakeaudio.dart';
 import 'package:anti_ai_project/screens/upload_screen/detectfakevideo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 import 'home_screens/home_page.dart';
 import 'upload_screen/detectfakeimg.dart';
+import 'package:anti_ai_project/providers/post_provider.dart';
 
 class All_Screen extends StatefulWidget {
   const All_Screen({super.key});
@@ -163,6 +165,7 @@ class _All_ScreenState extends State<All_Screen> {
     AlertScreen(),
     Profile_Screen()
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -206,7 +209,7 @@ class _All_ScreenState extends State<All_Screen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.notifications),
-            label: " Alert",
+            label: "Alert",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),

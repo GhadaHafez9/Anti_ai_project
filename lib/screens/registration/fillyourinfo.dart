@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
-import 'package:anti_ai_project/screens/home_screen_all.dart';
+import 'package:anti_ai_project/screens/registration/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -195,7 +195,8 @@ class _FillInfo_ScreenState extends State<FillInfo_Screen> {
                                     Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => All_Screen()),
+                                          builder: (context) =>
+                                              Signup_Screen()),
                                     );
                                   },
                                   style: ElevatedButton.styleFrom(
