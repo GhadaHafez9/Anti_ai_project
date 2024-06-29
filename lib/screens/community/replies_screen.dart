@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 class RepliesScreen extends StatelessWidget {
+  const RepliesScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Text('Replies Screen'),
     );
   }

@@ -1,9 +1,8 @@
-import 'package:anti_ai_project/screens/api_service.dart';
+import 'package:anti_ai_project/services/api_service.dart';
 import 'package:flutter/material.dart';
-import '../services/api_service.dart';
 
 class PostProvider with ChangeNotifier {
-  ApiService _apiService = ApiService();
+  final ApiService _apiService = ApiService();
   List<dynamic> _posts = [];
 
   List<dynamic> get posts => _posts;

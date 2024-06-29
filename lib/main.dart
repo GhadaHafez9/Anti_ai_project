@@ -1,44 +1,40 @@
+// import 'package:anti_ai_project/introscreen.dart';
 // ignore_for_file: prefer_const_constructors
-import 'package:anti_ai_project/screens/post_provider.dart';
+import 'package:anti_ai_project/screens/splash_screen.dart';
+// import 'package:device_preview/device_preview.dart';
+// import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:anti_ai_project/providers/post_provider.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class HomeScreen extends StatelessWidget {
+void main() {
+  runApp(const MyApp()
+      // DevicePreview(
+      //   enabled: !kReleaseMode,
+      //   builder: (context) => const MyApp(),
+      // ),
+      );
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    final postProvider = Provider.of<PostProvider>(context);
-
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Posts'),
-      ),
-      body: FutureBuilder(
-        future: postProvider.fetchPosts(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasError) {
-            return Center(child: Text('Error: ${snapshot.error}'));
-          } else {
-            return ListView.builder(
-              itemCount: postProvider.posts.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(postProvider.posts[index]['title']),
-                  subtitle: Text(postProvider.posts[index]['content']),
-                );
-              },
-            );
-          }
-        },
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Add functionality to add a new post
-        },
-        child: Icon(Icons.add),
-      ),
-    );
+    return ScreenUtilInit(
+        designSize: const Size(393, 852),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (_, child) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            // locale: DevicePreview.locale(context),
+            // builder: DevicePreview.appBuilder,
+            theme: ThemeData.dark(),
+            home: Splash_Screen(),
+            // routes: {
+            //   "/" :(context) => IntroScreen() ,
+            // },
+          );
+        });
   }
 }

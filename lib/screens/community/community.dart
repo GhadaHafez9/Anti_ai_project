@@ -1,15 +1,14 @@
+// ignore_for_file: camel_case_types
+
 import 'package:anti_ai_project/screens/community/posts_screen.dart';
 import 'package:anti_ai_project/screens/community/reacts_screen.dart';
 import 'package:anti_ai_project/screens/community/replies_screen.dart';
 import 'package:anti_ai_project/screens/community/votes_screen.dart';
 import 'package:flutter/material.dart';
 
-import 'posts_screen.dart';
-import 'reacts_screen.dart';
-import 'replies_screen.dart';
-import 'votes_screen.dart';
-
 class Community_Screen extends StatefulWidget {
+  const Community_Screen({super.key});
+
   @override
   _CommunityScreenState createState() => _CommunityScreenState();
 }
@@ -34,10 +33,10 @@ class _CommunityScreenState extends State<Community_Screen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Community'),
+        title: const Text('Community'),
         bottom: TabBar(
           controller: _tabController,
-          tabs: [
+          tabs: const [
             Tab(text: 'Posts'),
             Tab(text: 'Reacts'),
             Tab(text: 'Replies'),
@@ -47,7 +46,7 @@ class _CommunityScreenState extends State<Community_Screen>
       ),
       body: TabBarView(
         controller: _tabController,
-        children: [
+        children: const [
           PostsScreen(),
           ReactsScreen(),
           RepliesScreen(),
