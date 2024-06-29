@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:anti_ai_project/screens/alert_screens/alert.dart';
-import 'package:anti_ai_project/screens/community.dart';
+import 'package:anti_ai_project/screens/community/community.dart';
 import 'package:anti_ai_project/screens/profile_screens/profile.dart';
 import 'package:anti_ai_project/screens/upload_screen/detectfakeaudio.dart';
 import 'package:anti_ai_project/screens/upload_screen/detectfakevideo.dart';
