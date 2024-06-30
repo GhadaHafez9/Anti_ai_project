@@ -72,37 +72,38 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               itemCount: contents.length,
               itemBuilder: (_, i) {
                 return Padding(
-                  padding: const EdgeInsets.all(40),
-                  child: Column(
-                    children: [
-                      SizedBox(height: 60),
-                      Image.asset(
-                        contents[i].image,
-                        height: 400,
-                        width: 400,
-                        fit: BoxFit.fitWidth,
-                        filterQuality: FilterQuality.high,
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        contents[i].title,
-                        style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
-                          color: i == 0 ? Colors.white : Color(0xff5E87E8),
+                  padding: const EdgeInsets.symmetric(horizontal: 40),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        Image.asset(
+                          contents[i].image,
+                          height: 250,
+                          width: 400,
+                          fit: BoxFit.fitWidth,
+                          filterQuality: FilterQuality.high,
                         ),
-                      ),
-                      Text(
-                        contents[i].discription,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: i == 0 ? Color(0xff5E87E8) : Colors.white,
+                        SizedBox(
+                          height: 10,
                         ),
-                      ),
-                    ],
+                        Text(
+                          contents[i].title,
+                          style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                            color: i == 0 ? Colors.white : Color(0xff5E87E8),
+                          ),
+                        ),
+                        Text(
+                          contents[i].discription,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: i == 0 ? Color(0xff5E87E8) : Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 );
               },

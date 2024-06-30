@@ -4,8 +4,10 @@ import 'package:anti_ai_project/screens/registration/forgetpass.dart';
 import 'package:anti_ai_project/screens/home_screen_all.dart';
 import 'package:anti_ai_project/screens/onboardingscreen.dart';
 import 'package:anti_ai_project/screens/registration/signup_screen.dart';
+import 'package:anti_ai_project/services/api_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:overlay_kit/overlay_kit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -140,7 +142,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Email',
+                                  'Username',
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 18,
@@ -152,13 +154,13 @@ class _Login_ScreenState extends State<Login_Screen> {
                                   child: TextFormField(
                                     validator: (value) {
                                       if (value == null || value.isEmpty) {
-                                        return 'Please enter Email';
+                                        return 'Please enter Username';
                                       }
                                       return null;
                                     },
                                     controller: emailcontroller,
                                     decoration: InputDecoration(
-                                      hintText: 'Enter your email address',
+                                      hintText: 'Enter your Username',
                                       hintStyle: const TextStyle(
                                         color: Color(0xff9B9C9E),
                                       ),
@@ -335,16 +337,33 @@ class _Login_ScreenState extends State<Login_Screen> {
                                       height: 47,
                                       child: ElevatedButton(
                                         onPressed: () async {
-                                          //                       if ( _formSignInkey.currentState!.validate()) {
-                                          // final SharedPreferences prefs = await SharedPreferences.getInstance();
-                                          // await prefs.setString('email', emailcontroller.text);
-                                          Navigator.pushReplacement(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    All_Screen()),
-                                          );
-                                          //                   };
+                                          if (_formSignInkey.currentState!
+                                              .validate()) {
+                                            OverlayLoadingProgress.start();
+                                            List res = await ApiService()
+                                                .userLogin(emailcontroller.text,
+                                                    passwordcontroller.text);
+                                            OverlayLoadingProgress.stop();
+                                            if (!res[0]) {
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(SnackBar(
+                                                      content: Text(
+                                                          "Erro while Logging in")));
+                                              return;
+                                            }
+
+                                            SharedPreferences prefs =
+                                                await SharedPreferences
+                                                    .getInstance();
+                                            await prefs.setString(
+                                                'email', emailcontroller.text);
+                                            Navigator.of(context)
+                                                .pushAndRemoveUntil(
+                                                    MaterialPageRoute(
+                                                        builder: (ctx) =>
+                                                            All_Screen()),
+                                                    (route) => false);
+                                          }
                                         },
                                         style: ElevatedButton.styleFrom(
                                           backgroundColor: Color(0xff07488A),
@@ -375,7 +394,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                                       height: 47,
                                       child: ElevatedButton(
                                         onPressed: () {
-                                          Navigator.pushReplacement(
+                                          Navigator.push(
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>

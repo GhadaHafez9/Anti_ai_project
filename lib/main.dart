@@ -5,6 +5,7 @@ import 'package:anti_ai_project/screens/splash_screen.dart';
 // import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:overlay_kit/overlay_kit.dart';
 
 void main() {
   runApp(const MyApp()
@@ -25,15 +26,17 @@ class MyApp extends StatelessWidget {
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (_, child) {
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            // locale: DevicePreview.locale(context),
-            // builder: DevicePreview.appBuilder,
-            theme: ThemeData.dark(),
-            home: Splash_Screen(),
-            // routes: {
-            //   "/" :(context) => IntroScreen() ,
-            // },
+          return OverlayKit(
+            child: MaterialApp(
+              debugShowCheckedModeBanner: false,
+              // locale: DevicePreview.locale(context),
+              // builder: DevicePreview.appBuilder,
+              theme: ThemeData.dark(),
+              home: Splash_Screen(),
+              // routes: {
+              //   "/" :(context) => IntroScreen() ,
+              // },
+            ),
           );
         });
   }

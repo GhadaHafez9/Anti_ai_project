@@ -1,57 +1,33 @@
-// ignore_for_file: camel_case_types
-
-import 'package:anti_ai_project/screens/community/posts_screen.dart';
-import 'package:anti_ai_project/screens/community/reacts_screen.dart';
-import 'package:anti_ai_project/screens/community/replies_screen.dart';
-import 'package:anti_ai_project/screens/community/votes_screen.dart';
+import 'package:anti_ai_project/models/data.dart';
+import 'package:anti_ai_project/screens/community/community_post.dart';
 import 'package:flutter/material.dart';
 
 class Community_Screen extends StatefulWidget {
   const Community_Screen({super.key});
 
   @override
-  _CommunityScreenState createState() => _CommunityScreenState();
+  State<Community_Screen> createState() => _Community_ScreenState();
 }
 
-class _CommunityScreenState extends State<Community_Screen>
-    with SingleTickerProviderStateMixin {
-  late TabController _tabController;
-
-  @override
-  void initState() {
-    super.initState();
-    _tabController = TabController(length: 4, vsync: this);
-  }
-
-  @override
-  void dispose() {
-    _tabController.dispose();
-    super.dispose();
-  }
-
+class _Community_ScreenState extends State<Community_Screen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Community'),
-        bottom: TabBar(
-          controller: _tabController,
-          tabs: const [
-            Tab(text: 'Posts'),
-            Tab(text: 'Reacts'),
-            Tab(text: 'Replies'),
-            Tab(text: 'Votes'),
-          ],
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.all(15),
+        child: ListView.builder(
+          itemCount: posts.length,
+          itemBuilder: (ctx, i) {
+            return CommunityPost(
+              fullname: posts[i]["fullName"]!,
+              username: posts[i]["username"]!,
+              profileImage: posts[i]["profileImage"]!,
+              postImage: posts[i]["postImage"]!,
+              time: posts[i]["time"]!,
+              postContent: posts[i]["postContent"]!,
+            );
+          },
         ),
-      ),
-      body: TabBarView(
-        controller: _tabController,
-        children: const [
-          PostsScreen(),
-          ReactsScreen(),
-          RepliesScreen(),
-          VotesScreen(),
-        ],
       ),
     );
   }

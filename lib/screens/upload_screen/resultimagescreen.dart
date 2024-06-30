@@ -155,6 +155,7 @@ class _ResultImageScreenState extends State<ResultImageScreen> {
         _image = File(pickedFile.path);
         _isImageSelected = true;
       });
+      // ApiService().uploadPost()
 
       print(pickedFile.path);
     } else {}

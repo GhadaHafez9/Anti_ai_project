@@ -34,7 +34,7 @@ class _Home_PageState extends State<Home_Page> {
           ),
         ),
         title: const Text(
-          'Hello Ranim !',
+          'Hello  ',
           style: TextStyle(
             color: Colors.white,
             fontSize: 26,

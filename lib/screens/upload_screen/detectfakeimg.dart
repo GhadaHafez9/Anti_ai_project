@@ -6,8 +6,6 @@ import 'package:anti_ai_project/screens/upload_screen/resultimagescreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../home_screen_all.dart';
-
 class DetectFakeImage extends StatefulWidget {
   const DetectFakeImage({Key? key}) : super(key: key);
 
@@ -99,15 +97,11 @@ class _DetectFakeImageState extends State<DetectFakeImage> {
             color: Colors.white,
           ),
           onPressed: () {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => All_Screen()),
-            );
+            Navigator.of(context).maybePop();
           },
         ),
         automaticallyImplyLeading: false,
         backgroundColor: Color(0xff37425E),
-        toolbarHeight: 80,
       ),
       body: Column(children: [
         Container(
@@ -119,7 +113,7 @@ class _DetectFakeImageState extends State<DetectFakeImage> {
                 children: [
                   Center(
                     child: Text(
-                      "Detect Fake Videos",
+                      "Detect Fake Photos",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 26.sp,
@@ -136,7 +130,6 @@ class _DetectFakeImageState extends State<DetectFakeImage> {
                       padding: const EdgeInsets.all(10),
                       child: SizedBox(
                         width: 294.w,
-                        height: 50.h,
                         child: ElevatedButton(
                           onPressed: () {
                             showModalBottomSheet(
@@ -185,7 +178,6 @@ class _DetectFakeImageState extends State<DetectFakeImage> {
                                             color: Colors.white,
                                           ),
                                         ),
-                                        SizedBox(height: 20.h),
                                         Row(
                                           mainAxisSize: MainAxisSize.min,
                                           crossAxisAlignment:
@@ -220,9 +212,6 @@ class _DetectFakeImageState extends State<DetectFakeImage> {
                                                         ),
                                                         child: Column(
                                                           children: [
-                                                            SizedBox(
-                                                              height: 20.h,
-                                                            ),
                                                             Text(
                                                               'Do you want to save the photo in ',
                                                               style: TextStyle(
@@ -273,10 +262,6 @@ class _DetectFakeImageState extends State<DetectFakeImage> {
                                                                           BorderRadius.circular(
                                                                               10.r),
                                                                     ),
-                                                                    minimumSize:
-                                                                        Size(
-                                                                            114,
-                                                                            40),
                                                                   ),
                                                                   child: Text(
                                                                     'Yes',
@@ -316,10 +301,6 @@ class _DetectFakeImageState extends State<DetectFakeImage> {
                                                                             2.0,
                                                                       ),
                                                                     ),
-                                                                    minimumSize:
-                                                                        Size(
-                                                                            114,
-                                                                            40),
                                                                   ),
                                                                   child: Text(
                                                                     'No',
@@ -448,9 +429,6 @@ class _DetectFakeImageState extends State<DetectFakeImage> {
                       fontWeight: FontWeight.w900,
                     ),
                   ),
-                  SizedBox(
-                    height: 30.h,
-                  ),
                   Center(
                     child: GestureDetector(
                       onTap: () {
@@ -467,55 +445,6 @@ class _DetectFakeImageState extends State<DetectFakeImage> {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 450.h,
-                  ),
-                  // ElevatedButton(
-                  //   onPressed: () {
-                  //     Navigator.pushReplacement(
-                  //       context,
-                  //       MaterialPageRoute(builder: (context) => ResultScreen()),
-                  //     );
-                  //   },
-                  //   style: ElevatedButton.styleFrom(
-                  //     primary: Color(0xff07488A),
-                  //     shape: RoundedRectangleBorder(
-                  //       borderRadius: BorderRadius.circular(10),
-                  //     ),
-                  //     minimumSize: Size(150, 40),
-                  //   ),
-                  //   child: Text(
-                  //     'Upload',
-                  //     style: TextStyle(
-                  //       color: Colors.white,
-                  //       fontSize: 18,
-                  //     ),
-                  //   ),
-                  // ),
-                  // SizedBox(
-                  //   width: 30,
-                  // ),
-                  // ElevatedButton(
-                  //   onPressed: () {},
-                  //   style: ElevatedButton.styleFrom(
-                  //     primary: Color(0xff212131),
-                  //     shape: RoundedRectangleBorder(
-                  //       borderRadius: BorderRadius.circular(10),
-                  //       side: BorderSide(
-                  //         color: Colors.white,
-                  //         width: 2.0,
-                  //       ),
-                  //     ),
-                  //     minimumSize: Size(150, 40),
-                  //   ),
-                  //   child: Text(
-                  //     'Cancel',
-                  //     style: TextStyle(
-                  //       color: Colors.white,
-                  //       fontSize: 18,
-                  //     ),
-                  //   ),
-                  // ),
                 ],
               ),
             ),

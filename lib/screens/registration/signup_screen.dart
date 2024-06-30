@@ -2,11 +2,13 @@
 
 import 'package:anti_ai_project/screens/home_screen_all.dart';
 import 'package:anti_ai_project/screens/registration/login_screen.dart';
-import 'package:anti_ai_project/screens/registration/otp.dart';
 import 'package:anti_ai_project/screens/registration/terms&condi.dart';
+import 'package:anti_ai_project/services/api_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:overlay_kit/overlay_kit.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Signup_Screen extends StatefulWidget {
   const Signup_Screen({super.key});
@@ -19,8 +21,10 @@ class _Signup_ScreenState extends State<Signup_Screen> {
   final _formSignUpkey = GlobalKey<FormState>();
   bool _passwordVisible = false;
   bool isChecked = false;
-  TextEditingController emailcontroller = TextEditingController();
-  TextEditingController passwordcontroller = TextEditingController();
+  TextEditingController _username = TextEditingController();
+  TextEditingController _email = TextEditingController();
+  TextEditingController _password = TextEditingController();
+  TextEditingController _confirmPassword = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -117,6 +121,56 @@ class _Signup_ScreenState extends State<Signup_Screen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
+                                  'Username',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 18.sp,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ), // Label
+                                Container(
+                                  color: Color(0xff1A1D21),
+                                  padding: EdgeInsets.only(),
+                                  child: TextFormField(
+                                    controller: _username,
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return 'Please enter a username';
+                                      }
+                                      return null;
+                                    },
+                                    decoration: InputDecoration(
+                                      hintText: 'Enter a unique username',
+                                      hintStyle: const TextStyle(
+                                        color: Color(0xff9B9C9E),
+                                      ),
+                                      border: OutlineInputBorder(
+                                        borderSide: const BorderSide(
+                                          color: Color(0xff363A3D),
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.r),
+                                      ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: const BorderSide(
+                                          color: Color(0xff363A3D),
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.r),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 20.0.w, vertical: 5.0.h),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
                                   'Email address',
                                   style: TextStyle(
                                     color: Colors.white,
@@ -128,6 +182,7 @@ class _Signup_ScreenState extends State<Signup_Screen> {
                                   color: Color(0xff1A1D21),
                                   padding: EdgeInsets.only(),
                                   child: TextFormField(
+                                    controller: _email,
                                     validator: (value) {
                                       if (value == null || value.isEmpty) {
                                         return 'Please enter Email';
@@ -176,6 +231,7 @@ class _Signup_ScreenState extends State<Signup_Screen> {
                                 Container(
                                   color: Color(0xff1A1D21),
                                   child: TextFormField(
+                                    controller: _password,
                                     obscureText: true,
                                     obscuringCharacter: '*',
                                     validator: (value) {
@@ -235,11 +291,12 @@ class _Signup_ScreenState extends State<Signup_Screen> {
                                       Container(
                                         color: Color(0xff1A1D21),
                                         child: TextFormField(
+                                          controller: _confirmPassword,
                                           obscureText: !_passwordVisible,
                                           obscuringCharacter: '*',
                                           validator: (value) {
                                             if (value == null ||
-                                                value.length < 11) {
+                                                value.isEmpty) {
                                               return 'Please enter Password';
                                             }
                                             return null;
@@ -387,20 +444,45 @@ class _Signup_ScreenState extends State<Signup_Screen> {
                                       height: 47.h,
                                       child: ElevatedButton(
                                         onPressed: () async {
-                                          // if (_formSignUpkey.currentState!
-                                          //     .validate()) {
-                                          //   final SharedPreferences prefs =
-                                          //       await SharedPreferences
-                                          //           .getInstance();
-                                          //   await prefs.setString(
-                                          //       'email', emailcontroller.text);
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    OTPScreen()),
-                                          );
-                                          // };
+                                          if (_formSignUpkey.currentState!
+                                              .validate()) {
+                                            if (!isChecked) {
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(SnackBar(
+                                                      content: Text(
+                                                          "Please Accept Terms Of Service")));
+                                              return;
+                                            }
+
+                                            OverlayLoadingProgress.start();
+                                            List res = await ApiService()
+                                                .signUp(
+                                                    _username.text,
+                                                    _email.text,
+                                                    _password.text,
+                                                    _confirmPassword.text);
+                                            OverlayLoadingProgress.stop();
+
+                                            print(res);
+                                            if (!res[0]) {
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(SnackBar(
+                                                      content: Text(
+                                                          "Username may already exists")));
+                                              return;
+                                            }
+                                            final SharedPreferences prefs =
+                                                await SharedPreferences
+                                                    .getInstance();
+                                            await prefs.setString(
+                                                'email', _email.text);
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      All_Screen()),
+                                            );
+                                          }
                                         },
                                         style: ElevatedButton.styleFrom(
                                           backgroundColor: Color(0xff07488A),
@@ -431,12 +513,7 @@ class _Signup_ScreenState extends State<Signup_Screen> {
                                       height: 47.h,
                                       child: ElevatedButton(
                                         onPressed: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    All_Screen()),
-                                          );
+                                          Navigator.of(context).maybePop();
                                         },
                                         style: ElevatedButton.styleFrom(
                                           backgroundColor: Color(0xff212131),
