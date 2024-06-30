@@ -14,6 +14,9 @@ class All_Uploads extends StatefulWidget {
 }
 
 class _All_UploadsState extends State<All_Uploads> {
+  bool isMobile(BuildContext context) =>
+      MediaQuery.of(context).size.width < 600;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,93 +51,97 @@ class _All_UploadsState extends State<All_Uploads> {
       ),
       body: Column(
         children: [
-          Padding(
-            padding: EdgeInsets.only(top: 15.h),
-            child: Container(
-              height: 40.h,
-              child: ListView(
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                children: [
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xff07488A),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(6.r),
+          if (isMobile(context))
+            Padding(
+              padding: EdgeInsets.only(top: 15.h),
+              child: Container(
+                height: 40.h,
+                child: ListView(
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xff07488A),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(6.r),
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => All_Uploads()),
+                        );
+                      },
+                      child: Text(
+                        ' All ',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.w400),
                       ),
                     ),
-                    onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) => All_Uploads()),
-                      );
-                    },
-                    child: Text(
-                      ' All ',
-                      style: TextStyle(
+                    SizedBox(width: 15.w),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xff212131),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(6.r),
+                          side: BorderSide(
+                            color: Color(0xff07488A),
+                            width: 1.0.w,
+                          ),
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Real_Uploads()),
+                        );
+                      },
+                      child: Text(
+                        'Real',
+                        style: TextStyle(
                           color: Colors.white,
                           fontSize: 16.sp,
-                          fontWeight: FontWeight.w400),
-                    ),
-                  ),
-                  SizedBox(width: 15.w),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xff212131),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(6.r),
-                        side: BorderSide(
-                          color: Color(0xff07488A),
-                          width: 1.0.w,
+                          fontWeight: FontWeight.w400,
                         ),
                       ),
                     ),
-                    onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) => Real_Uploads()),
-                      );
-                    },
-                    child: Text(
-                      'Real',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w400,
+                    SizedBox(width: 15.w),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xff212131),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(6.r),
+                          side: BorderSide(
+                            color: Color(0xff07488A),
+                            width: 1.0.w,
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                  SizedBox(width: 15.w),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xff212131),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(6.r),
-                        side: BorderSide(
-                          color: Color(0xff07488A),
-                          width: 1.0.w,
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Fake_Uploads()),
+                        );
+                      },
+                      child: Text(
+                        'Fake',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w400,
                         ),
                       ),
                     ),
-                    onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) => Fake_Uploads()),
-                      );
-                    },
-                    child: Text(
-                      'Fake',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
           SizedBox(
             height: 25.h,
           ),

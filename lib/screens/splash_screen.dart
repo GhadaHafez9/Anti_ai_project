@@ -52,8 +52,8 @@ class _Splash_ScreenState extends State<Splash_Screen> {
                 padding: EdgeInsets.all(0.20),
                 child: SvgPicture.asset(
                   'assets/anti-ai logo.svg',
-                  height: 350.h,
-                  width: 300.w,
+                  height: 350,
+                  width: 300,
                 ),
               ),
             ),
